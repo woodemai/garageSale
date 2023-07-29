@@ -1,7 +1,6 @@
 'use client';
 
-
-import {useCallback, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
 import Input from "@/app/components/Input";
 import Button from "@/app/components/Button";
@@ -10,12 +9,21 @@ import {BsGithub, BsGoogle} from "react-icons/bs";
 import {LiaYandexInternational} from "react-icons/lia";
 import axios from 'axios';
 import {toast} from "react-hot-toast";
-import {signIn} from 'next-auth/react';
+import {signIn, useSession} from 'next-auth/react';
+import {useRouter} from "next/navigation";
 
 type Variant = 'LOGIN' | 'REGISTER';
 const AuthForm = () => {
+    const session = useSession();
+    const router = useRouter();
     const [variant, setVariant] = useState<Variant>('LOGIN');
     const [isLoading, setIsLoading] = useState(false);
+    useEffect(() => {
+        if (session?.status === 'authenticated') {
+            router.push('/main')
+            console.log('Authenticated')
+        }
+    }, [session?.status]);
     const toggleVariant = useCallback(() => {
         if (variant === 'LOGIN') {
             setVariant('REGISTER')
@@ -42,6 +50,7 @@ const AuthForm = () => {
 
         if (variant === 'REGISTER') {
             axios.post('/api/register', data)
+                .then(() => signIn('credentials',{...data, redirect:false}))
                 .catch(() => toast.error('Something went wrong!'))
                 .finally(() => setIsLoading(false));
         }
@@ -62,6 +71,7 @@ const AuthForm = () => {
     }
     const socialAction = (action: string) => {
         setIsLoading(true);
+
         signIn(action, {redirect: false})
             .then((callback) => {
                 if (callback?.error) {
@@ -69,6 +79,7 @@ const AuthForm = () => {
                 }
                 if (callback?.ok && !callback?.error) {
                     toast.success("Logged in");
+                    router.push('/main')
                 }
             }).finally(() => setIsLoading(false));
     }
