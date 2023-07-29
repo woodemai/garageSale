@@ -2,6 +2,7 @@ import './globals.css'
 import type {Metadata} from 'next'
 import {Inter} from 'next/font/google'
 import {ReactNode} from "react";
+import ToasterContext from "@/app/context/ToasterContext";
 
 const inter = Inter({subsets: ['latin']})
 
@@ -18,6 +19,7 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body className={inter.className}>
+        <ToasterContext/>
         {children}
         </body>
         </html>
