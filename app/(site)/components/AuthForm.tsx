@@ -8,6 +8,9 @@ import Button from "@/app/components/Button";
 import AuthSocialButton from "@/app/(site)/components/AuthSocialButton";
 import {BsGithub, BsGoogle} from "react-icons/bs";
 import {LiaYandexInternational} from "react-icons/lia";
+import axios from 'axios';
+import {toast} from "react-hot-toast";
+import {signIn} from 'next-auth/react';
 
 type Variant = 'LOGIN' | 'REGISTER';
 const AuthForm = () => {
@@ -38,15 +41,36 @@ const AuthForm = () => {
         setIsLoading(true);
 
         if (variant === 'REGISTER') {
-            // axios register
+            axios.post('/api/register', data)
+                .catch(() => toast.error('Something went wrong!'))
+                .finally(() => setIsLoading(false));
         }
         if (variant === 'LOGIN') {
-            // Next Auth SignIn
+            signIn('credentials', {
+                ...data,
+                redirect: false
+            })
+                .then((callback) => {
+                    if (callback?.error) {
+                        toast.error("Invalid credentials!");
+                    }
+                    if (callback?.ok && !callback?.error) {
+                        toast.success("Logged in");
+                    }
+                }).finally(() => setIsLoading(false));
         }
     }
     const socialAction = (action: string) => {
         setIsLoading(true);
-        // NextAuth Social SignIn
+        signIn(action, {redirect: false})
+            .then((callback) => {
+                if (callback?.error) {
+                    toast.error("Invalid credentials!");
+                }
+                if (callback?.ok && !callback?.error) {
+                    toast.success("Logged in");
+                }
+            }).finally(() => setIsLoading(false));
     }
     return (
         <div
@@ -78,6 +102,7 @@ const AuthForm = () => {
                             type="text"
                             errors={errors}
                             register={register}
+                            disabled={isLoading}
                         />
                     )}
                     <Input
@@ -86,6 +111,7 @@ const AuthForm = () => {
                         type="email"
                         errors={errors}
                         register={register}
+                        disabled={isLoading}
                     />
                     <Input
                         id="password"
@@ -93,6 +119,7 @@ const AuthForm = () => {
                         type="password"
                         errors={errors}
                         register={register}
+                        disabled={isLoading}
                     />
                     <div>
                         <Button
@@ -168,10 +195,10 @@ const AuthForm = () => {
                         text-gray-500
                     "
                 >
-                    <div>{variant === 'LOGIN' ? 'New to Messenger' : "Already have an account?"}</div>
+                    <div>{variant === 'LOGIN' ? 'New to Garage Sale?' : "Already have an account?"}</div>
                     <div
                         onClick={toggleVariant}
-                        className="underline cursor-pointer"
+                        className="underline cursor-pointer hover:text-gray-900 transition-all duration-200"
                     >
                         {variant === 'LOGIN' ? "Create an account" : "Login"}
                     </div>
