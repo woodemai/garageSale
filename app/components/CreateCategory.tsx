@@ -3,8 +3,8 @@ import {useState} from "react";
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
 import axios from "axios";
 import {toast} from "react-hot-toast";
-import Input from "@/app/components/Input";
-import Button from "@/app/components/Button";
+import Input from "@/app/components/UI/Input";
+import Button from "@/app/components/UI/Button";
 import ReactMarkdown from "react-markdown";
 
 const CreateItem = () => {

@@ -1,9 +1,13 @@
 import prismadb from "@/app/libs/prismadb";
 import ItemBlock from "@/app/components/ItemBlock";
-import List from "@/app/components/List";
+import List from "@/app/components/UI/List";
 
 const Page = async () => {
-    const items = await prismadb.item.findMany();
+    const items = await prismadb.item.findMany({
+        orderBy: {
+            updatedAt: 'desc'
+        }
+    });
     return (
         <div className="
                 flex
@@ -19,7 +23,7 @@ const Page = async () => {
             <List
                 items={items}
                 element={(item) => <ItemBlock item={item}/>}
-                title="Items"
+                title={`Items - ` + items.length}
                 noItemsErrorMessage="No items found"
             />
         </div>

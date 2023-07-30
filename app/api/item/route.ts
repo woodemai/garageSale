@@ -6,7 +6,7 @@ export async function POST(
 ) {
     try {
         const json = await request.json();
-        const {name, description, image} = json;
+        const {name, description, image, categoryId} = json;
         const quantity = Number(json.quantity);
         if (!name || !description || !quantity) {
 
@@ -17,7 +17,8 @@ export async function POST(
                 name,
                 description,
                 quantity,
-                image
+                image,
+                categoryId
             }
         })
         if (item) {

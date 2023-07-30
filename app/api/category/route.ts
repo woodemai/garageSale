@@ -14,8 +14,8 @@ export async function POST(
             data: {
                 name,
                 description,
-                image
-            }
+                image,
+            },
         });
         if (!category) {
             return new NextResponse("Category was not created", {status: 500});

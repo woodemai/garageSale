@@ -15,7 +15,6 @@ const ItemBlock: FC<ItemProps> = ({
         item.createdAt.getDate() + "."
         + item.createdAt.getMonth() + "."
         + item.createdAt.getFullYear()
-    console.log(item.createdAt)
     return (
         <Link href={`/storage/${item.id}`}>
             <div

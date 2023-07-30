@@ -2,8 +2,8 @@
 
 import {useCallback, useEffect, useState} from "react";
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
-import Input from "@/app/components/Input";
-import Button from "@/app/components/Button";
+import Input from "@/app/components/UI/Input";
+import Button from "@/app/components/UI/Button";
 import AuthSocialButton from "@/app/(site)/components/AuthSocialButton";
 import {BsGithub, BsGoogle} from "react-icons/bs";
 import {LiaYandexInternational} from "react-icons/lia";

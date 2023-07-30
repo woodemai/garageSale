@@ -1,15 +1,21 @@
 'use client';
-import {useRouter} from "next/navigation";
-import {useState} from "react";
+import {FC, useState} from "react";
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
 import axios from "axios";
 import {toast} from "react-hot-toast";
-import Input from "@/app/components/Input";
-import Button from "@/app/components/Button";
+import Input from "@/app/components/UI/Input";
+import Button from "@/app/components/UI/Button";
 import ReactMarkdown from "react-markdown";
+import Select from "@/app/components/UI/Select";
+import {Category} from "@prisma/client";
 
-const CreateItem = () => {
-    const router = useRouter()
+interface CreateItemProps {
+    categories: Category[]
+}
+
+const CreateItem: FC<CreateItemProps> = ({
+                                             categories
+                                         }) => {
     const [isLoading, setIsLoading] = useState(false);
     const {
         register,
@@ -31,7 +37,6 @@ const CreateItem = () => {
             .then(() => toast.success("Item created!"))
             .catch(() => toast.error("Something went wrong"))
             .finally(() => setIsLoading(false))
-            .finally(() => router.back())
     }
     return (
         <div className="bg-white rounded-md p-4">
@@ -65,6 +70,18 @@ const CreateItem = () => {
                 <Input disabled={isLoading} label="Choose image" id="image" register={register} errors={errors}
                        type='text'
                        placeholder="Image URL"/>
+                <Select
+                    items={categories}
+                    optionTitle={(category: Category) => category.name}
+                    optionValue={(category:Category) => category.id}
+                    title="Category"
+                    register={register}
+                    errors={errors}
+                    required
+                    disabled={isLoading}
+                    id={'categoryId'}
+                    placeholder={"Choose a category"}
+                />
                 <Button disabled={isLoading} fullWidth type='submit'>Create</Button>
             </form>
         </div>
