@@ -1,9 +1,10 @@
+import React from 'react';
 import prismadb from "@/app/libs/prismadb";
-import ItemBlock from "@/app/components/ItemBlock";
 import List from "@/app/components/List";
+import CategoryBlock from "@/app/components/CategoryBlock";
 
 const Page = async () => {
-    const items = await prismadb.item.findMany();
+    const categories = await prismadb.category.findMany();
     return (
         <div className="
                 flex
@@ -17,10 +18,10 @@ const Page = async () => {
             "
         >
             <List
-                items={items}
-                element={(item) => <ItemBlock item={item}/>}
-                title="Items"
-                noItemsErrorMessage="No items found"
+                items={categories}
+                element={(category) => <CategoryBlock category={category}/>}
+                title="Categories"
+                noItemsErrorMessage="No categories found"
             />
         </div>
     );
