@@ -6,6 +6,11 @@ export default withAuth({
 });
 export const config = {
     matcher: [
-        '/main/:path*'
+        '/main/:path*',
+        '/profile/:path*',
+        '/storage/:path*',
+        '/categories/:path*',
+        '/settings/:path*',
+        '/create-item/:path*',
     ]
 };

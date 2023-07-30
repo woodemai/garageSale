@@ -4,7 +4,10 @@ const nextConfig = {
         domains: [
             'res.cloudinary.com',
             'avatars.githubusercontent.com',
-            'lh3.googleusercontent.com'
+            'lh3.googleusercontent.com',
+            'www.kgsnab.ru',
+            's00.yaplakal.com',
+            'gardenazap.ru'
         ]
     }
 }

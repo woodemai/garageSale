@@ -1,4 +1,4 @@
-'use client';
+    'use client';
 
 import {useCallback, useEffect, useState} from "react";
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
@@ -79,7 +79,6 @@ const AuthForm = () => {
                 }
                 if (callback?.ok && !callback?.error) {
                     toast.success("Logged in");
-                    router.push('/main')
                 }
             }).finally(() => setIsLoading(false));
     }

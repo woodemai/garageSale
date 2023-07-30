@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
-import {useSession} from "next-auth/react";
+import {signOut, useSession} from "next-auth/react";
 import Image from "next/image";
+import Button from "@/app/components/Button";
 
 const Page = () => {
     const session = useSession();
@@ -29,6 +30,9 @@ const Page = () => {
                     rounded-full
                 "
             />
+            <div className="mt-6 w-full">
+                <Button fullWidth onClick={() => signOut()}>Log out</Button>
+            </div>
         </div>
     );
 };

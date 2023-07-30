@@ -23,14 +23,14 @@ const SidebarElement: FC<SidebarElementProps> = ({
             href={href}
             className={clsx(`
                 inline-flex
-                text-gray-900 
+                text-gray-400 
                 rounded-md
                 transition-all duration-200
                 p-3
                 cursor-default`,
                 selected && "bg-gray-100",
                 xl ? "text-3xl" : "text-lg",
-                !disabled && "text-gray-300 hover:bg-gray-200 hover:shadow-sm hover:text-gray-900 cursor-pointer")}
+                !disabled && " hover:bg-gray-200 hover:shadow-sm hover:text-gray-900 cursor-pointer")}
         >
             <Icon/>
         </Link>

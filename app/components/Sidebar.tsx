@@ -5,6 +5,7 @@ import {GiHomeGarage} from "react-icons/gi";
 import SidebarNav from "@/app/components/SidebarNav";
 import {AiFillSetting} from "react-icons/ai";
 import {CgProfile} from "react-icons/cg";
+import {BiCategory} from "react-icons/bi";
 
 const Sidebar = () => {
     return (
@@ -18,12 +19,14 @@ const Sidebar = () => {
                 items-center
                 flex
                 gap-2
+                bg-white
             "
         >
             <SidebarElement xl disabled icon={GiHomeGarage} href='/main'/>
             <SidebarNav>
                 <SidebarElement icon={LuHome} href='/main'/>
                 <SidebarElement icon={LuWarehouse} href='/storage'/>
+                <SidebarElement icon={BiCategory} href={'/categories'}/>
             </SidebarNav>
             <SidebarNav>
                 <SidebarElement icon={CgProfile} href={'/profile'}/>
