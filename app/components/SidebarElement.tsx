@@ -28,7 +28,7 @@ const SidebarElement: FC<SidebarElementProps> = ({
                 transition-all duration-200
                 p-3
                 cursor-default`,
-                selected && "bg-gray-100",
+                selected && "bg-gray-200 text-gray-900",
                 xl ? "text-3xl" : "text-lg",
                 !disabled && " hover:bg-gray-200 hover:shadow-sm hover:text-gray-900 cursor-pointer")}
         >

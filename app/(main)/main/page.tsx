@@ -1,8 +1,10 @@
 import CreateItem from "@/app/components/CreateItem";
 import ReactMarkdown from "react-markdown";
 import CreateCategory from "@/app/components/CreateCategory";
+import prismadb from "@/app/libs/prismadb";
 
-const Main = () => {
+const Main = async () => {
+    const categories = await prismadb.category.findMany();
     return (
         <div
             className="
@@ -37,7 +39,7 @@ const Main = () => {
                     gap-8
                 "
                 >
-                    <CreateItem/>
+                    <CreateItem categories={categories}/>
                     <CreateCategory/>
                 </div>
             </div>

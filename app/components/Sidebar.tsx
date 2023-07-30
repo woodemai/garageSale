@@ -1,4 +1,4 @@
-import React from 'react';
+'use client';
 import SidebarElement from "@/app/components/SidebarElement";
 import {LuHome, LuWarehouse} from "react-icons/lu";
 import {GiHomeGarage} from "react-icons/gi";
@@ -6,8 +6,15 @@ import SidebarNav from "@/app/components/SidebarNav";
 import {AiFillSetting} from "react-icons/ai";
 import {CgProfile} from "react-icons/cg";
 import {BiCategory} from "react-icons/bi";
+import {useEffect, useState} from "react";
+import {usePathname} from "next/navigation";
 
 const Sidebar = () => {
+    const pathname = usePathname()
+    const [currentPathname, setCurrentPathname] = useState(window.location.href);
+    useEffect(() => {
+        setCurrentPathname(pathname)
+     }, [pathname]);
     return (
         <div
             className="
@@ -22,15 +29,33 @@ const Sidebar = () => {
                 bg-white
             "
         >
-            <SidebarElement xl disabled icon={GiHomeGarage} href='/main'/>
+            <SidebarElement
+                disabled icon={GiHomeGarage} href='/main'
+                xl
+            />
             <SidebarNav>
-                <SidebarElement icon={LuHome} href='/main'/>
-                <SidebarElement icon={LuWarehouse} href='/storage'/>
-                <SidebarElement icon={BiCategory} href={'/categories'}/>
+                <SidebarElement
+                    selected={currentPathname.includes('/main')}
+                    icon={LuHome} href='/main'
+                />
+                <SidebarElement
+                    selected={currentPathname.includes('/storage')}
+                    icon={LuWarehouse} href='/storage'
+                />
+                <SidebarElement
+                    selected={currentPathname.includes('/categories')}
+                    icon={BiCategory} href={'/categories'}
+                />
             </SidebarNav>
             <SidebarNav>
-                <SidebarElement icon={CgProfile} href={'/profile'}/>
-                <SidebarElement icon={AiFillSetting} href='/settings'/>
+                <SidebarElement
+                    selected={currentPathname.includes('/profile')}
+                    icon={CgProfile} href={'/profile'}
+                />
+                <SidebarElement
+                    selected={currentPathname.includes('/settings')}
+                    icon={AiFillSetting} href='/settings'
+                />
             </SidebarNav>
             <nav
                 className="

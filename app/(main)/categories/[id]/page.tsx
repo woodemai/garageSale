@@ -1,9 +1,9 @@
 import {FC} from "react";
 import prismadb from "@/app/libs/prismadb";
 import ReactMarkdown from "react-markdown";
-import List from "@/app/components/List";
+import List from "@/app/components/UI/List";
 import ItemBlock from "@/app/components/ItemBlock";
-import ButtonBack from "@/app/components/ButtonBack";
+import ButtonBack from "@/app/components/UI/ButtonBack";
 
 interface PageProps {
     params: {
@@ -25,8 +25,12 @@ const Page: FC<PageProps> = async ({
         )
     }
     const categoryItems = await prismadb.category.findUnique({
-        where: {id}
-    }).items();
+        where: {id},
+    }).items({
+        orderBy: {
+            updatedAt: 'desc'
+        }
+    });
     if (categoryItems) {
         return (
             <div
@@ -49,7 +53,7 @@ const Page: FC<PageProps> = async ({
                     rounded-md
                     bg-white
                     text-gray-500
-                    w-1/2
+                    w-2/3
                 "
                 >
 

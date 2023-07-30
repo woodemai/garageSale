@@ -1,6 +1,6 @@
 'use client';
 import {FC, ReactNode} from "react";
-import ButtonBack from "@/app/components/ButtonBack";
+import ButtonBack from "@/app/components/UI/ButtonBack";
 
 interface ModalProps {
     children: ReactNode,

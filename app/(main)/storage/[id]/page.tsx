@@ -1,7 +1,7 @@
 import {FC} from "react";
 import prismadb from "@/app/libs/prismadb";
 import ReactMarkdown from "react-markdown";
-import ButtonBack from "@/app/components/ButtonBack";
+import ButtonBack from "@/app/components/UI/ButtonBack";
 
 interface PageProps {
     params: {
