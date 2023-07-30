@@ -3,22 +3,30 @@ import {Item} from "@prisma/client";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import Link from "next/link";
+import prismadb from "@/app/libs/prismadb";
 
 interface ItemProps {
     item: Item
 }
 
-const ItemBlock: FC<ItemProps> = ({
-                                      item
-                                  }) => {
+const ItemBlock: FC<ItemProps> = async ({
+                                            item
+                                        }) => {
+    const user = await prismadb.user.findUnique({
+        where: {
+            id: item.userId as string
+        }
+    });
     const date =
         item.createdAt.getDate() + "."
         + item.createdAt.getMonth() + "."
         + item.createdAt.getFullYear()
-    return (
-        <Link href={`/storage/${item.id}`}>
-            <div
-                className="
+    if (user) {
+        return (
+
+            <Link href={`/storage/${item.id}`}>
+                <div
+                    className="
                 flex
                 flex-row
                 justify-between
@@ -36,24 +44,24 @@ const ItemBlock: FC<ItemProps> = ({
                 hover:shadow-md
                 transition-all duration-100
             "
-            >
-                <div
-                    className="
+                >
+                    <div
+                        className="
                     flex
                     flex-col
                     gap-4
                     items-start
                     justify-start
                 "
-                >
-                    <ReactMarkdown>{item.name}</ReactMarkdown>
-                    <ReactMarkdown>{item.description}</ReactMarkdown>
-                    <ReactMarkdown>{String(item.quantity)}</ReactMarkdown>
-                    <ReactMarkdown className="text-xs">{String(date)}</ReactMarkdown>
-                </div>
-                <div>
-                    {item.image && <Image
-                        className="
+                    >
+                        <ReactMarkdown>{item.name}</ReactMarkdown>
+                        <ReactMarkdown>{item.description}</ReactMarkdown>
+                        <ReactMarkdown>{String(item.quantity)}</ReactMarkdown>
+                        <ReactMarkdown className="text-xs">{user.name + " " + String(date)}</ReactMarkdown>
+                    </div>
+                    <div>
+                        {item.image && <Image
+                            className="
                         rounded-md
                         border-sky-200
                         border
@@ -62,14 +70,15 @@ const ItemBlock: FC<ItemProps> = ({
                         h-24
                         shadow-sm
                     "
-                        width={48}
-                        height={48}
-                        src={item.image}
-                        alt={'image'}/>}
+                            width={48}
+                            height={48}
+                            src={item.image}
+                            alt={'image'}/>}
+                    </div>
                 </div>
-            </div>
-        </Link>
-    );
+            </Link>
+        );
+    }
 };
 
 export default ItemBlock;

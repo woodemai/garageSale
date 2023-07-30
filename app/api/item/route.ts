@@ -6,11 +6,19 @@ export async function POST(
 ) {
     try {
         const json = await request.json();
-        const {name, description, image, categoryId} = json;
+        const {name, description, image, categoryId, email} = json;
         const quantity = Number(json.quantity);
         if (!name || !description || !quantity) {
 
             return new NextResponse('Missing info', {status: 400});
+        }
+         const user = await prismadb.user.findUnique({
+             where: {
+                 email
+             }
+         });
+        if (!user) {
+            return new NextResponse('Cannot find user', {status: 500});
         }
         const item = await prismadb.item.create({
             data: {
@@ -18,7 +26,8 @@ export async function POST(
                 description,
                 quantity,
                 image,
-                categoryId
+                categoryId,
+                userId: user.id
             }
         })
         if (item) {

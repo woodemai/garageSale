@@ -8,6 +8,7 @@ import Button from "@/app/components/UI/Button";
 import ReactMarkdown from "react-markdown";
 import Select from "@/app/components/UI/Select";
 import {Category} from "@prisma/client";
+import {useSession} from "next-auth/react";
 
 interface CreateItemProps {
     categories: Category[]
@@ -16,6 +17,8 @@ interface CreateItemProps {
 const CreateItem: FC<CreateItemProps> = ({
                                              categories
                                          }) => {
+    const session = useSession()
+    const email = session.data?.user?.email as string;
     const [isLoading, setIsLoading] = useState(false);
     const {
         register,
@@ -33,7 +36,7 @@ const CreateItem: FC<CreateItemProps> = ({
     })
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true)
-        axios.post('/api/item', data)
+        axios.post('/api/item', {...data, email})
             .then(() => toast.success("Item created!"))
             .catch(() => toast.error("Something went wrong"))
             .finally(() => setIsLoading(false))
@@ -73,7 +76,7 @@ const CreateItem: FC<CreateItemProps> = ({
                 <Select
                     items={categories}
                     optionTitle={(category: Category) => category.name}
-                    optionValue={(category:Category) => category.id}
+                    optionValue={(category: Category) => category.id}
                     title="Category"
                     register={register}
                     errors={errors}
