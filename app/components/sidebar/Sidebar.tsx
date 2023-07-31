@@ -11,7 +11,7 @@ import {usePathname} from "next/navigation";
 
 const Sidebar = () => {
     const pathname = usePathname()
-    const [currentPathname, setCurrentPathname] = useState(window.location.href);
+    const [currentPathname, setCurrentPathname] = useState(pathname);
     useEffect(() => {
         setCurrentPathname(pathname)
      }, [pathname]);

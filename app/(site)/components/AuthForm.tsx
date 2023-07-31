@@ -23,7 +23,7 @@ const AuthForm = () => {
             router.push('/main')
             console.log('Authenticated')
         }
-    }, [session?.status]);
+    }, [session?.status, router]);
     const toggleVariant = useCallback(() => {
         if (variant === 'LOGIN') {
             setVariant('REGISTER')
