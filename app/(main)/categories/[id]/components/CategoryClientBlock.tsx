@@ -8,13 +8,11 @@ import CategoryDeleteModal from "@/app/(main)/categories/[id]/components/Categor
 import Button from "@/app/components/UI/Button";
 
 interface CategoryClientBlockProps {
-    category: Category,
-    items: Item[],
+    category: Category & {items:Item[]},
 }
 
 const CategoryClientBlock: FC<CategoryClientBlockProps> = ({
                                                                category,
-                                                               items
                                                            }) => {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -38,7 +36,7 @@ const CategoryClientBlock: FC<CategoryClientBlockProps> = ({
 
                 <ButtonBack/>
                 <ReactMarkdown
-                    className="text-xl font-bold">{category.name + " - " + String(items.length)}</ReactMarkdown>
+                    className="text-xl font-bold">{category.name + " - " + String(category.items.length)}</ReactMarkdown>
                 <ReactMarkdown className="text-xs mb-2">{category.description}</ReactMarkdown>
                 <div
                     className="

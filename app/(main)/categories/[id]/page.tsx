@@ -14,16 +14,16 @@ const Page: FC<PageProps> = async ({
                                        params: {id}
                                    }) => {
     const category = await prisma.category.findUnique({
-        where: {id}
-    });
-    const categoryItems = await prisma.category.findUnique({
         where: {id},
-    }).items({
-        orderBy: {
-            updatedAt: 'desc'
+        include: {
+            items: {
+                orderBy: {
+                    updatedAt: 'desc'
+                }
+            }
         }
     });
-    if (category && categoryItems) {
+    if (category) {
         return (
             <>
                  <div
@@ -37,8 +37,8 @@ const Page: FC<PageProps> = async ({
                     w-full
                 "
                 >
-                    <CategoryClientBlock category={category} items={categoryItems}/>
-                    <List items={categoryItems} element={(item) => <ItemBlock item={item}/>} title="Items"/>
+                    <CategoryClientBlock category={category}/>
+                    <List items={category.items} element={(item) => <ItemBlock item={item}/>} title="Items"/>
                 </div>
             </>
         )

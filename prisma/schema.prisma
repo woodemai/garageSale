@@ -67,9 +67,9 @@ model Item {
   image       String
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  Category    Category? @relation(fields: [categoryId], references: [id])
+  category    Category? @relation(fields: [categoryId], references: [id])
   categoryId  String?
-  User        User?     @relation(fields: [userId], references: [id])
+  user        User?     @relation(fields: [userId], references: [id])
   userId      String?
 }
 
