@@ -96,6 +96,12 @@ const ItemCreate: FC<CreateItemProps> = ({
                     options={{maxFiles: 1}}
                     onUpload={handleImageUpload}
                     uploadPreset='fkkcjhmy'
+                    className="
+                        flex
+                        flex-row
+                        gap-4
+                        items-end
+                    "
                 >
                     {imageUrl !== '' ?
                         <div>

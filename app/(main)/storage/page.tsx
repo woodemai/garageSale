@@ -1,5 +1,5 @@
 import prismadb from "@/app/libs/prismadb";
-import ItemBlock from "@/app/components/ItemBlock";
+import ItemBlock from "@/app/components/item/ItemBlock";
 import List from "@/app/components/UI/List";
 
 const Page = async () => {

@@ -1,6 +1,6 @@
-import ItemCreate from "@/app/components/ItemCreate";
+import ItemCreate from "@/app/components/item/ItemCreate";
 import ReactMarkdown from "react-markdown";
-import CreateCategory from "@/app/components/CategoryCreate";
+import CreateCategory from "@/app/components/category/CategoryCreate";
 import prismadb from "@/app/libs/prismadb";
 
 const Main = async () => {

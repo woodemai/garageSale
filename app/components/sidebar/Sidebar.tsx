@@ -1,8 +1,8 @@
 'use client';
-import SidebarElement from "@/app/components/SidebarElement";
+import SidebarElement from "@/app/components/sidebar/SidebarElement";
 import {LuHome, LuWarehouse} from "react-icons/lu";
 import {GiHomeGarage} from "react-icons/gi";
-import SidebarNav from "@/app/components/SidebarNav";
+import SidebarNav from "@/app/components/sidebar/SidebarNav";
 import {AiFillSetting} from "react-icons/ai";
 import {CgProfile} from "react-icons/cg";
 import {BiCategory} from "react-icons/bi";

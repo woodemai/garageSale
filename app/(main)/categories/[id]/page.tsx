@@ -1,8 +1,8 @@
 import {FC} from "react";
-import prismadb from "@/app/libs/prismadb";
+import prisma from "@/app/libs/prismadb";
 import ReactMarkdown from "react-markdown";
 import List from "@/app/components/UI/List";
-import ItemBlock from "@/app/components/ItemBlock";
+import ItemBlock from "@/app/components/item/ItemBlock";
 import ButtonBack from "@/app/components/UI/ButtonBack";
 
 interface PageProps {
@@ -14,7 +14,7 @@ interface PageProps {
 const Page: FC<PageProps> = async ({
                                        params: {id}
                                    }) => {
-    const category = await prismadb.category.findUnique({
+    const category = await prisma.category.findUnique({
         where: {id}
     });
     if (!category) {
@@ -24,7 +24,7 @@ const Page: FC<PageProps> = async ({
             </ReactMarkdown>
         )
     }
-    const categoryItems = await prismadb.category.findUnique({
+    const categoryItems = await prisma.category.findUnique({
         where: {id},
     }).items({
         orderBy: {
