@@ -1,26 +1,24 @@
 import {NextRequest, NextResponse} from "next/server";
-import prismadb from "@/app/libs/prismadb";
+import prisma from "@/app/libs/prismadb";
 
 export async function DELETE (
     request: NextRequest,
     {params: {id}}: {params: {id:string}}
 ) {
     try {
-        console.log(id)
-
         if (!id) {
             return new NextResponse('Id was not found', {status: 500});
         }
-        const item = await prismadb.item.delete({
+        const item = await prisma.item.delete({
             where: {id}
         });
         if (item) {
             return NextResponse.json(item, {status: 200});
         }else {
-            return new NextResponse('Internal error', {status: 500});
+            return new NextResponse('Item was not found', {status: 404});
         }
     } catch (error: any) {
-        console.log(error);
-        return new NextResponse('Creating item error', {status: 500});
+        console.log(error, 'Deleting category error');
+        return new NextResponse('Internal error', {status: 500});
     }
 }

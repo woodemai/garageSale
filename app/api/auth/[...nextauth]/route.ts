@@ -8,7 +8,7 @@ import {PrismaAdapter} from '@next-auth/prisma-adapter';
 
 import prisma from '@/app/libs/prismadb';
 
-export const authOptions: AuthOptions = {
+const authOptions: AuthOptions = {
     adapter: PrismaAdapter(prisma),
     providers: [
         GithubProvider({
@@ -41,7 +41,7 @@ export const authOptions: AuthOptions = {
                 if (!user || (user && !user.hashedPassword)) {
                     throw new Error("Invalid credentials!");
                 }
-                const isCorrectPassword = await bcrypt.compare(credentials.password, user.hashedPassword);
+                const isCorrectPassword = await bcrypt.compare(credentials.password, user.hashedPassword as string);
                 if (!isCorrectPassword) {
                     throw new Error("Invalid credentials!");
                 }

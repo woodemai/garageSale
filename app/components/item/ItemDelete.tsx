@@ -7,6 +7,8 @@ import Button from "@/app/components/UI/Button";
 import ReactMarkdown from "react-markdown";
 import {Item} from "@prisma/client";
 import {router} from "next/client";
+import {PiWarningLight} from "react-icons/pi";
+
 interface CreateItemProps {
     item: Item
 }
@@ -24,21 +26,57 @@ const ItemCreate: FC<CreateItemProps> = ({
         axios.delete(`/api/item/${id}`)
             .then(() => toast.success("Item deleted!"))
             .catch(() => toast.error("Something went wrong"))
-            .finally(() => router.push('/storage'))
+            .finally(() => {
+                setIsLoading(false);
+                router.push('/storage')
+            })
     }
     return (
-        <div className="bg-white rounded-md py-2 px-4">
-            <ReactMarkdown
-                className="
-                                text-left
-                                mb-4
-                                text-xl
-                                tracking-tight
-                                font-bold
-                            "
+        <div className="bg-white rounded-md py-2 px-2">
+            <div className="
+                    flex
+                    flex-row
+                    gap-4
+                    justify-start
+                "
             >
-                {"Are you sure you want to delete " + item.name + "?"}
-            </ReactMarkdown>
+                <div className="
+                        text-rose-600
+                        bg-rose-200
+                        rounded-full
+                        p-2
+                        h-fit
+                        flex
+                        justify-center
+                        items-center
+                    "
+                >
+                    <PiWarningLight size={24}/>
+                </div>
+                <div>
+                    <ReactMarkdown
+                        className="
+                    font-semibold
+                    text-lg
+                    text-left
+                    text-gray-900
+                    mb-2
+                "
+                    >
+                        Delete item
+                    </ReactMarkdown>
+                    <ReactMarkdown
+                        className="
+                    text-gray-500
+                    text-sm
+                    text-left
+                    mb-6
+                "
+                    >
+                        Are you sure to delete the item, this action cannot be undone
+                    </ReactMarkdown>
+                </div>
+            </div>
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="
@@ -48,7 +86,7 @@ const ItemCreate: FC<CreateItemProps> = ({
 
                 "
             >
-                <Button disabled={isLoading} danger fullWidth type='submit'>Yes, delete</Button>
+                <Button disabled={isLoading} danger type='submit'>Yes, delete</Button>
             </form>
         </div>
     );
