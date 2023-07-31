@@ -12,11 +12,13 @@ interface ItemProps {
 const ItemBlock: FC<ItemProps> = async ({
                                             item
                                         }) => {
+    if (item.userId) {
     const user = await prisma.user.findUnique({
         where: {
-            id: item.userId as string
+            id: item.userId
         }
     });
+
     if (user) {
         return (
 
@@ -73,6 +75,7 @@ const ItemBlock: FC<ItemProps> = async ({
                 </div>
             </Link>
         );
+    }
     }
 };
 
