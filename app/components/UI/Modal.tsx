@@ -1,61 +1,111 @@
 'use client';
-import {FC, ReactNode} from "react";
-import ButtonBack from "@/app/components/UI/ButtonBack";
+import {FC, Fragment, ReactNode} from "react";
+import {Dialog, Transition} from "@headlessui/react";
+import {IoClose} from "react-icons/io5";
 
 interface ModalProps {
+    isOpen?: boolean,
+    onClose: () => void
     children: ReactNode,
 }
 
 const Modal: FC<ModalProps> = ({
+                                   isOpen,
+                                   onClose,
                                    children,
 
                                }) => {
     return (
-        <div
-            className="
-                flex
-                justify-center
-                items-center
-                absolute
-                top-0
-                left-0
-                w-full
-                h-full
-                bg-gray-200 bg-opacity-20
-                backdrop-blur-sm
-            "
-        >
-            <div
-                className="
-                    flex
-                    flex-col
-                    gap-2
-                    bg-white
-                    rounded-md
-                    min-w-max
-                    p-4
-                    shadow-md
-                    m-8
-                "
-            >
-                <div>
+        <Transition.Root show={isOpen} as={Fragment}>
+            <Dialog as='div' className='relative z-50' onClose={onClose}>
+                <Transition.Child
+                    as={Fragment}
+                    enter="ease-out durantion-300"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="ease-in durantion-200"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                >
                     <div
                         className="
-                            flex
-                            flex-row-reverse
-                            justify-between
-                            items-center
-                            p-1
-                            m-1
-                            w-full
+                            fixed
+                            inset-0
+                            bg-gray-200
+                            backdrop-blur-sm
+                            bg-opacity-75
+                            transition-opacity
                         "
-                    >
-                        <ButtonBack/>
+                    />
+                </Transition.Child>
+                <div className="fixed inset-0 z-10 overflow-y-auto">
+                    <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                        <Transition.Child
+                            as={Fragment}
+                            enter="ease-out durantion-300"
+                            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                            enterTo="opacity-100 translate-y-0 sm:scale-100"
+                            leave="ease-in durantion-200"
+                            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        >
+                            <Dialog.Panel
+                                className="
+                                    relative
+                                    transform
+                                    overflow-hidden
+                                    rounded-lg
+                                    bg-white
+                                    px-4
+                                    pb-4
+                                    pt-5
+                                    text-left
+                                    shadow-xl
+                                    transition-all
+                                    w-full
+                                    sm:my-8
+                                    sm:w-full
+                                    sm:max-w-lg
+                                    sm:p-6
+                                "
+                            >
+                                <div
+                                    className="
+                                        absolute
+                                        right-0
+                                        top-0
+                                        hidden
+                                        pr-4
+                                        pt-4
+                                        sm:block
+                                        z-10
+                                    "
+                                >
+                                    <button
+                                        type="button"
+                                        className="
+                                            rounded-md
+                                            bg-white
+                                            text-gray-400
+                                            hover:text-gray-500
+                                            focus:outline-none
+                                            focus:ring-2
+                                            focus:ring-indigo-500
+                                            focus:ring-offset-2
+                                        "
+                                        onClick={onClose}
+                                    >
+                                        <span className="sr-only">Close</span>
+                                        <IoClose className="h-6 w-6" aria-hidden={true}/>
+                                    </button>
+                                </div>
+                                {children}
+                            </Dialog.Panel>
+                        </Transition.Child>
                     </div>
                 </div>
-                {children}
-            </div>
-        </div>
+            </Dialog>
+        </Transition.Root>
     );
 };
 

@@ -31,7 +31,7 @@ const ItemBlock: FC<ItemProps> = async ({
                 flex-row
                 justify-between
                 items-center
-                rounded-md
+                rounded-lg
                 shadow-sm
                 bg-white
                 p-4
@@ -69,8 +69,8 @@ const ItemBlock: FC<ItemProps> = async ({
                         h-24
                         shadow-sm
                     "
-                            width={48}
-                            height={48}
+                            width={192}
+                            height={192}
                             src={item.image}
                             alt={'image'}/>}
                     </div>
