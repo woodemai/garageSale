@@ -3,8 +3,8 @@ import {Item} from "@prisma/client";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import Link from "next/link";
-import prismadb from "@/app/libs/prismadb";
-
+import prisma from "@/app/libs/prismadb";
+import {format} from 'date-fns';
 interface ItemProps {
     item: Item
 }
@@ -12,15 +12,11 @@ interface ItemProps {
 const ItemBlock: FC<ItemProps> = async ({
                                             item
                                         }) => {
-    const user = await prismadb.user.findUnique({
+    const user = await prisma.user.findUnique({
         where: {
             id: item.userId as string
         }
     });
-    const date =
-        item.createdAt.getDate() + "."
-        + item.createdAt.getMonth() + "."
-        + item.createdAt.getFullYear()
     if (user) {
         return (
 
@@ -34,7 +30,7 @@ const ItemBlock: FC<ItemProps> = async ({
                 rounded-lg
                 shadow-sm
                 bg-white
-                p-4
+                p-6
                 w-full
                 min-w-full
                 cursor-pointer
@@ -56,7 +52,7 @@ const ItemBlock: FC<ItemProps> = async ({
                     >
                         <ReactMarkdown className="font-bold">{item.name + " - "  + String(item.quantity)}</ReactMarkdown>
                         <ReactMarkdown className="">{item.description}</ReactMarkdown>
-                        <ReactMarkdown className="text-xs text-sky-500">{user.name + " " + String(date)}</ReactMarkdown>
+                        <ReactMarkdown className="text-xs text-sky-500">{`${user.name} ${format(new Date(item.createdAt), "dd/MM/yyyy HH:mm")}`}</ReactMarkdown>
                     </div>
                     <div>
                         {item.image && <Image

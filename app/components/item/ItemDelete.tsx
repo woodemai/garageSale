@@ -7,6 +7,7 @@ import Button from "@/app/components/UI/Button";
 import ReactMarkdown from "react-markdown";
 import {Item} from "@prisma/client";
 import {router} from "next/client";
+import {PiWarningLight} from "react-icons/pi";
 
 interface CreateItemProps {
     item: Item
@@ -25,31 +26,57 @@ const ItemCreate: FC<CreateItemProps> = ({
         axios.delete(`/api/item/${id}`)
             .then(() => toast.success("Item deleted!"))
             .catch(() => toast.error("Something went wrong"))
-            .finally(() => router.push('/storage'))
+            .finally(() => {
+                setIsLoading(false);
+                router.push('/storage')
+            })
     }
     return (
-        <div className="bg-white rounded-md py-2 px-4">
-            <ReactMarkdown
-                className="
+        <div className="bg-white rounded-md py-2 px-2">
+            <div className="
+                    flex
+                    flex-row
+                    gap-4
+                    justify-start
+                "
+            >
+                <div className="
+                        text-rose-600
+                        bg-rose-200
+                        rounded-full
+                        p-2
+                        h-fit
+                        flex
+                        justify-center
+                        items-center
+                    "
+                >
+                    <PiWarningLight size={24}/>
+                </div>
+                <div>
+                    <ReactMarkdown
+                        className="
                     font-semibold
                     text-lg
                     text-left
                     text-gray-900
                     mb-2
                 "
-            >
-                Delete item
-            </ReactMarkdown>
-            <ReactMarkdown
-                className="
+                    >
+                        Delete item
+                    </ReactMarkdown>
+                    <ReactMarkdown
+                        className="
                     text-gray-500
                     text-sm
                     text-left
                     mb-6
                 "
-            >
-                Are you sure to delete the item. This account cannot be undone
-            </ReactMarkdown>
+                    >
+                        Are you sure to delete the item, this action cannot be undone
+                    </ReactMarkdown>
+                </div>
+            </div>
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="

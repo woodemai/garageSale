@@ -1,7 +1,6 @@
 import {Category} from "@prisma/client";
 import {FC} from "react";
 import ReactMarkdown from "react-markdown";
-import Image from "next/image";
 import Link from "next/link";
 
 interface CategoryBlockProps {
@@ -47,22 +46,6 @@ const CategoryBlock:FC<CategoryBlockProps> = ({
                >
                    <ReactMarkdown className="font-bold w-full mx-auto">{category.name}</ReactMarkdown>
                    <ReactMarkdown className="text-xs w-full mx-auto">{category.description}</ReactMarkdown>
-               </div>
-               <div>
-                   {category.image && <Image
-                       className="
-                        rounded-md
-                        border-sky-200
-                        border
-                        object-cover
-                        w-24
-                        h-24
-                        shadow-sm
-                    "
-                       width={48}
-                       height={48}
-                       src={category.image}
-                       alt={'image'}/>}
                </div>
            </div>
        </Link>

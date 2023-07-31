@@ -1,28 +1,34 @@
 'use client';
 import React, {FC, useState} from 'react';
-import {Category, Item} from "@prisma/client";
+import {Category, Item, User} from "@prisma/client";
 import EditItemModal from "@/app/(main)/storage/[id]/components/EditItemModal";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import Button from "@/app/components/UI/Button";
 import DeleteItemModal from "@/app/(main)/storage/[id]/components/DeleteItemModal";
 import ButtonBack from "@/app/components/UI/ButtonBack";
+import {format} from "date-fns";
+import ImageModal from "@/app/(main)/storage/[id]/components/ImageModal";
 interface ClientBlockProps {
     categories: Category[],
     item: Item,
-    category: Category
+    category: Category,
+    user: User
 }
 const ClientBlock:FC<ClientBlockProps> = ({
     categories,
     item,
-    category
+    category,
+    user
                                           }) => {
     const [isModalEditOpen, setIsModalEditOpen] = useState(false);
     const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
+    const [isModalImageOpen, setIsModalImageOpen] = useState(false);
     return (
         <>
             <EditItemModal isOpen={isModalEditOpen} onClose={() => setIsModalEditOpen(false)} item={item} categories={categories}/>
             <DeleteItemModal isOpen={isModalDeleteOpen} onClose={() => setIsModalDeleteOpen(false)} item={item}/>
+            <ImageModal isOpen={isModalImageOpen} onClose={() => setIsModalImageOpen(false)} imageUrl={item.image}/>
             <div
                 className="
                     flex
@@ -52,19 +58,25 @@ const ClientBlock:FC<ClientBlockProps> = ({
                                 className="text-xl font-bold">{item.name + " - " + String(item.quantity)}</ReactMarkdown>
                             <ReactMarkdown className="text-xs mb-2">{category.description}</ReactMarkdown>
                             <ReactMarkdown>{item.description}</ReactMarkdown>
+                            <ReactMarkdown className="text-xs text-sky-500 mt-10">{`${user.name} ${format(new Date(item.createdAt), "dd/MM/yyyy HH:mm")}`}</ReactMarkdown>
                         </div>
                         {(item.image && item.image !== '') &&
-                            <Image
-                                src={item.image}
-                                alt={'image'}
-                                width={192}
-                                height={192}
-                                className="
-                                rounded-md
+                            <div className="w-fit overflow-hidden rounded-md" onClick={() => setIsModalImageOpen(true)}>
+                                <Image
+                                    src={item.image}
+                                    alt={'image'}
+                                    width={192}
+                                    height={192}
+                                    className="
                                 shadow-sm
                                 object-cover
+                                hover:scale-110
+                                cursor-pointer
+                                transition
+                                translate
                             "
-                            />}
+                                />
+                            </div>}
                     </div>
                     <div
                         className="

@@ -15,6 +15,7 @@ const DeleteItemModal: FC<DeleteItemModal> = ({
                                                   isOpen,
                                                   onClose
                                               }) => {
+
     return (
         <Modal onClose={onClose} isOpen={isOpen}>
             <ItemDelete item={item}/>

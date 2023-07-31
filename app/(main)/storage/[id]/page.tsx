@@ -19,8 +19,13 @@ const Page: FC<PageProps> = async ({
         const category = await prisma.category.findUnique({
             where: {id: item.categoryId as string}
         });
-        if (category) {
-            return <ClientBlock categories={categories} item={item} category={category}/>
+        const user = await prisma.user.findUnique({
+            where: {
+                id: item.userId as string
+            }
+        });
+        if (category && user) {
+            return <ClientBlock categories={categories} item={item} category={category} user={user}/>
         }
     }
 };
