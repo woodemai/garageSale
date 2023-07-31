@@ -1,9 +1,9 @@
-import prismadb from "@/app/libs/prismadb";
+import prisma from "@/app/libs/prismadb";
 import ItemBlock from "@/app/components/item/ItemBlock";
 import List from "@/app/components/UI/List";
 
 const Page = async () => {
-    const items = await prismadb.item.findMany({
+    const items = await prisma.item.findMany({
         orderBy: {
             updatedAt: 'desc'
         }
