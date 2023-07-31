@@ -49,15 +49,14 @@ const ItemBlock: FC<ItemProps> = async ({
                         className="
                     flex
                     flex-col
-                    gap-4
+                    gap-2
                     items-start
                     justify-start
                 "
                     >
-                        <ReactMarkdown>{item.name}</ReactMarkdown>
-                        <ReactMarkdown>{item.description}</ReactMarkdown>
-                        <ReactMarkdown>{String(item.quantity)}</ReactMarkdown>
-                        <ReactMarkdown className="text-xs">{user.name + " " + String(date)}</ReactMarkdown>
+                        <ReactMarkdown className="font-bold">{item.name + " - "  + String(item.quantity)}</ReactMarkdown>
+                        <ReactMarkdown className="">{item.description}</ReactMarkdown>
+                        <ReactMarkdown className="text-xs text-sky-500">{user.name + " " + String(date)}</ReactMarkdown>
                     </div>
                     <div>
                         {item.image && <Image

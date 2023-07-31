@@ -1,5 +1,4 @@
-'use client';
-import CreateItem from "@/app/components/CreateItem";
+import ItemCreate from "@/app/components/ItemCreate";
 import Modal from "@/app/components/UI/Modal";
 import prismadb from "@/app/libs/prismadb";
 
@@ -11,7 +10,7 @@ const Page = async () => {
     });
     return (
         <Modal>
-            <CreateItem categories={categories}/>
+            <ItemCreate categories={categories}/>
         </Modal>
     )
 };

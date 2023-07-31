@@ -27,6 +27,9 @@ const Sidebar = () => {
                 flex
                 gap-2
                 bg-white
+                sticky
+                top-0
+                left-0
             "
         >
             <SidebarElement

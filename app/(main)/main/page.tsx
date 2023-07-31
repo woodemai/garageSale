@@ -1,6 +1,6 @@
-import CreateItem from "@/app/components/CreateItem";
+import ItemCreate from "@/app/components/ItemCreate";
 import ReactMarkdown from "react-markdown";
-import CreateCategory from "@/app/components/CreateCategory";
+import CreateCategory from "@/app/components/CategoryCreate";
 import prismadb from "@/app/libs/prismadb";
 
 const Main = async () => {
@@ -39,7 +39,7 @@ const Main = async () => {
                     gap-8
                 "
                 >
-                    <CreateItem categories={categories}/>
+                    <ItemCreate categories={categories}/>
                     <CreateCategory/>
                 </div>
             </div>

@@ -6,10 +6,11 @@ export async function POST(
 ) {
     try {
         const json = await request.json();
-        const {name, description, image} = json;
+        const {name, description} = json;
         if (!name || !description) {
             return new NextResponse("Missing data", {status: 400});
         }
+        const image = json.imageUrl ? json.imageUrl : '';
         const category = await prismadb.category.create({
             data: {
                 name,
@@ -20,7 +21,7 @@ export async function POST(
         if (!category) {
             return new NextResponse("Category was not created", {status: 500});
         }
-        return NextResponse.json(category, {status:200});
+        return NextResponse.json(category, {status: 200});
     } catch (error: any) {
         console.log(error)
         return new NextResponse("Category creation error", {status: 500});
