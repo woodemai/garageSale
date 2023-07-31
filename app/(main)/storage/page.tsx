@@ -1,13 +1,9 @@
-import prisma from "@/app/libs/prismadb";
 import ItemBlock from "@/app/components/item/ItemBlock";
 import List from "@/app/components/UI/List";
-
+import getItems from "@/app/actions/getItems";
+export const dynamic = 'force-dynamic';
 const Page = async () => {
-    const items = await prisma.item.findMany({
-        orderBy: {
-            updatedAt: 'desc'
-        }
-    });
+    const items = await getItems();
     return (
         <div className="
                 flex

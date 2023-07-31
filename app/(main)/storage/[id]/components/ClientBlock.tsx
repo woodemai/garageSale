@@ -10,10 +10,10 @@ import ButtonBack from "@/app/components/UI/ButtonBack";
 import {format} from "date-fns";
 import ImageModal from "@/app/(main)/storage/[id]/components/ImageModal";
 interface ClientBlockProps {
-    categories: Category[],
+    categories: Category[] ,
     item: Item,
-    category: Category,
-    user: User
+    category:Category,
+    user:User,
 }
 const ClientBlock:FC<ClientBlockProps> = ({
     categories,
