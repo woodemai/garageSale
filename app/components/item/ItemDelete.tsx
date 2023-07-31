@@ -7,6 +7,7 @@ import Button from "@/app/components/UI/Button";
 import ReactMarkdown from "react-markdown";
 import {Item} from "@prisma/client";
 import {router} from "next/client";
+
 interface CreateItemProps {
     item: Item
 }
@@ -30,14 +31,24 @@ const ItemCreate: FC<CreateItemProps> = ({
         <div className="bg-white rounded-md py-2 px-4">
             <ReactMarkdown
                 className="
-                                text-left
-                                mb-4
-                                text-xl
-                                tracking-tight
-                                font-bold
-                            "
+                    font-semibold
+                    text-lg
+                    text-left
+                    text-gray-900
+                    mb-2
+                "
             >
-                {"Are you sure you want to delete " + item.name + "?"}
+                Delete item
+            </ReactMarkdown>
+            <ReactMarkdown
+                className="
+                    text-gray-500
+                    text-sm
+                    text-left
+                    mb-6
+                "
+            >
+                Are you sure to delete the item. This account cannot be undone
             </ReactMarkdown>
             <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -48,7 +59,7 @@ const ItemCreate: FC<CreateItemProps> = ({
 
                 "
             >
-                <Button disabled={isLoading} danger fullWidth type='submit'>Yes, delete</Button>
+                <Button disabled={isLoading} danger type='submit'>Yes, delete</Button>
             </form>
         </div>
     );

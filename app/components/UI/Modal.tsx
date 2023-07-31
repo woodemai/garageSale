@@ -31,9 +31,9 @@ const Modal: FC<ModalProps> = ({
                         className="
                             fixed
                             inset-0
-                            bg-gray-200
+                            bg-gray-100
                             backdrop-blur-sm
-                            bg-opacity-75
+                            bg-opacity-50
                             transition-opacity
                         "
                     />
