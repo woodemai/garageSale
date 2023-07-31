@@ -8,14 +8,21 @@ import Button from "@/app/components/UI/Button";
 import ReactMarkdown from "react-markdown";
 import Select from "@/app/components/UI/Select";
 import {Category} from "@prisma/client";
+import {useSession} from "next-auth/react";
+import {CldUploadButton} from "next-cloudinary";
+import {HiPhoto} from "react-icons/hi2";
+import Image from "next/image";
 
 interface CreateItemProps {
     categories: Category[]
 }
 
-const CreateItem: FC<CreateItemProps> = ({
+const ItemCreate: FC<CreateItemProps> = ({
                                              categories
                                          }) => {
+    const session = useSession()
+    const email = session.data?.user?.email as string;
+    const [imageUrl, setImageUrl] = useState<string>('');
     const [isLoading, setIsLoading] = useState(false);
     const {
         register,
@@ -33,10 +40,13 @@ const CreateItem: FC<CreateItemProps> = ({
     })
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true)
-        axios.post('/api/item', data)
+        axios.post('/api/item', {...data, email, imageUrl})
             .then(() => toast.success("Item created!"))
             .catch(() => toast.error("Something went wrong"))
             .finally(() => setIsLoading(false))
+    }
+    const handleImageUpload = (result: any) => {
+        setImageUrl(result?.info?.secure_url)
     }
     return (
         <div className="bg-white rounded-md p-4">
@@ -67,13 +77,10 @@ const CreateItem: FC<CreateItemProps> = ({
                 <Input disabled={isLoading} label="Quantity" id="quantity" register={register} errors={errors}
                        type="number"
                        placeholder="1" required/>
-                <Input disabled={isLoading} label="Choose image" id="image" register={register} errors={errors}
-                       type='text'
-                       placeholder="Image URL"/>
                 <Select
                     items={categories}
                     optionTitle={(category: Category) => category.name}
-                    optionValue={(category:Category) => category.id}
+                    optionValue={(category: Category) => category.id}
                     title="Category"
                     register={register}
                     errors={errors}
@@ -82,10 +89,48 @@ const CreateItem: FC<CreateItemProps> = ({
                     id={'categoryId'}
                     placeholder={"Choose a category"}
                 />
+                <CldUploadButton
+                    options={{maxFiles: 1}}
+                    onUpload={handleImageUpload}
+                    uploadPreset='fkkcjhmy'
+                >
+                    {imageUrl !== '' ?
+                        <div>
+                            <Image
+                                src={imageUrl}
+                                alt={'uploadedImage'}
+                                width={96}
+                                height={96}
+                                className="
+                                rounded-md
+                            "
+                            />
+                        </div>
+                        : <></>
+                    }
+
+                    <div className="
+                            flex
+                            flex-row
+                            gap-2
+                            text-sky-500
+                            items-end
+                            hover:text-gray-700
+                            transition-all
+                            durantion-100
+                            flex-nowrap
+                            mt-6
+                       "
+                    >
+                        <HiPhoto className="text-xl ml-1"/>
+                        <ReactMarkdown
+                            className="text-xs ">{imageUrl === '' ? 'Choose a photo' : 'Choose another photo'}</ReactMarkdown>
+                    </div>
+                </CldUploadButton>
                 <Button disabled={isLoading} fullWidth type='submit'>Create</Button>
             </form>
         </div>
     );
 };
 
-export default CreateItem;
+export default ItemCreate;

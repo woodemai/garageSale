@@ -35,6 +35,7 @@ const Modal: FC<ModalProps> = ({
                     min-w-max
                     p-4
                     shadow-md
+                    m-8
                 "
             >
                 <div>

@@ -14,6 +14,7 @@ interface SelectProps<T> {
     disabled?: boolean,
     required?: boolean
     placeholder?: string
+    defaultValue?:string
 }
 
 const Select: FC<SelectProps<any>> = ({
