@@ -3,10 +3,12 @@ import NextAuth, {AuthOptions} from 'next-auth';
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProver from 'next-auth/providers/google'
 import YandexProvider from 'next-auth/providers/yandex'
+import DiscordProvider from 'next-auth/providers/discord'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import {PrismaAdapter} from '@next-auth/prisma-adapter';
 
 import prisma from '@/app/libs/prismadb';
+import Discord from "next-auth/providers/discord";
 
 const authOptions: AuthOptions = {
     adapter: PrismaAdapter(prisma),
@@ -23,6 +25,11 @@ const authOptions: AuthOptions = {
             clientId: process.env.YANDEX_CLIENT_ID as string,
             clientSecret: process.env.YANDEX_CLIENT_SECRET as string,
         }),
+        DiscordProvider({
+            clientId: process.env.DISCORD_CLIENT_ID as string,
+            clientSecret: process.env.DISCORD_CLIENT_SECRET as string
+        }),
+
         CredentialsProvider({
             name: 'credentials',
             credentials: {

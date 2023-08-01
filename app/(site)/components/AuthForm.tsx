@@ -5,7 +5,7 @@ import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
 import Input from "@/app/components/UI/Input";
 import Button from "@/app/components/UI/Button";
 import AuthSocialButton from "@/app/(site)/components/AuthSocialButton";
-import {BsGithub, BsGoogle} from "react-icons/bs";
+import {BsDiscord, BsGithub, BsGoogle} from "react-icons/bs";
 import {LiaYandexInternational} from "react-icons/lia";
 import axios from 'axios';
 import {toast} from "react-hot-toast";
@@ -21,7 +21,6 @@ const AuthForm = () => {
     useEffect(() => {
         if (session?.status === 'authenticated') {
             router.push('/main')
-            console.log('Authenticated')
         }
     }, [session?.status, router]);
     const toggleVariant = useCallback(() => {
@@ -191,6 +190,10 @@ const AuthForm = () => {
                         <AuthSocialButton
                             icon={LiaYandexInternational}
                             onClick={() => socialAction('yandex')}
+                        />
+                        <AuthSocialButton
+                            icon={BsDiscord}
+                            onClick={() => socialAction('discord')}
                         />
                     </div>
                 </div>
