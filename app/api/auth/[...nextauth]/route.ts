@@ -8,7 +8,6 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import {PrismaAdapter} from '@next-auth/prisma-adapter';
 
 import prisma from '@/app/libs/prismadb';
-import Discord from "next-auth/providers/discord";
 
 const authOptions: AuthOptions = {
     adapter: PrismaAdapter(prisma),
