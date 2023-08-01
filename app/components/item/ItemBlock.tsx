@@ -26,13 +26,15 @@ const ItemBlock: FC<ItemProps> = async ({
                 <div
                     className="
                 flex
-                flex-row
+                flex-col
+                sm:flex-row
                 justify-between
-                items-center
+                items-start
                 rounded-lg
                 shadow-sm
                 bg-white
                 p-6
+                sm:w-2/3
                 w-full
                 min-w-full
                 cursor-pointer
@@ -49,12 +51,18 @@ const ItemBlock: FC<ItemProps> = async ({
                     flex-col
                     gap-2
                     items-start
-                    justify-start
+                    justify-between
+                    h-full
                 "
                     >
-                        <ReactMarkdown className="font-bold">{item.name + " - "  + String(item.quantity)}</ReactMarkdown>
-                        <ReactMarkdown className="">{item.description}</ReactMarkdown>
-                        <ReactMarkdown className="text-xs text-sky-500">{`${user.name} ${format(new Date(item.createdAt), "dd/MM/yyyy HH:mm")}`}</ReactMarkdown>
+                        <div>
+                            <ReactMarkdown className="font-bold text-xl">{item.name + " - "  + String(item.quantity)}</ReactMarkdown>
+                            <ReactMarkdown className="">{item.description}</ReactMarkdown>
+
+                        </div>
+                        <div>
+                            <ReactMarkdown className="text-xs text-sky-500">{`${user.name} ${format(new Date(item.createdAt), "dd/MM/yyyy HH:mm")}`}</ReactMarkdown>
+                        </div>
                     </div>
                     <div>
                         {item.image && <Image
@@ -63,8 +71,8 @@ const ItemBlock: FC<ItemProps> = async ({
                         border-sky-200
                         border
                         object-cover
-                        w-24
-                        h-24
+                        w-fit
+                        h-fit
                         shadow-sm
                     "
                             width={192}

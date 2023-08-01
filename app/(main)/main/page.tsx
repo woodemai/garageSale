@@ -12,12 +12,12 @@ const Main = async () => {
                 justify-start
                 flex-col
                 items-center
-                m-8
                 w-full
                 h-full
+                mt-4
             "
         >
-            <div>
+            <div className="w-full">
                 <ReactMarkdown
                     className="
                         text-3xl
@@ -31,12 +31,13 @@ const Main = async () => {
                 <div
                     className="
                     flex
-                    flex-row
-                    w-full
-                    justify-between
+                    flex-col
+                    sm:flex-row
+                    justify-center
                     items-start
                     h-full
                     gap-8
+                    w-full
                 "
                 >
                     <ItemCreate categories={categories}/>

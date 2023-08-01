@@ -27,9 +27,11 @@ const CategoryClientBlock: FC<CategoryClientBlockProps> = ({
                     flex-col
                     gap-4
                     p-4
-                    rounded-md
+                    rounded-b-lg
+                    sm:rounded-lg
                     text-gray-500
-                    w-2/3
+                    w-full
+                    sm:max-w-2xl
                     bg-white
                 `}
             >
@@ -41,7 +43,8 @@ const CategoryClientBlock: FC<CategoryClientBlockProps> = ({
                 <div
                     className="
                                     flex
-                                    flex-row
+                                    flex-col
+                                    sm:flex-row
                                     justify-between
                                     gap-2
                                 "

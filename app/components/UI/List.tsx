@@ -18,7 +18,13 @@ const List: FC<ListProps<any>> = ({
     return (
         <div
             className="
+                mx-auto
                 w-full
+                sm:max-w-sm
+                md:max-w-md
+                lg:max-w-lg
+                xl:max-w-xl
+                2xl:max-w-2xl
                 flex
                 flex-col
                 items-center
@@ -26,13 +32,14 @@ const List: FC<ListProps<any>> = ({
         >
             {items.length > 0
                 ?
-                <div className="w-1/2">
+                <div className="w-full sm:max-w-2xl">
                     <ReactMarkdown
                         className="
                             font-bold
                             text-xl
-                            ml-2
                             mb-6
+                            text-center
+                            sm:text-left
                         "
                     >
                         {title}
@@ -41,6 +48,7 @@ const List: FC<ListProps<any>> = ({
                         className="
                 flex
                 flex-col
+                w-full
                 gap-4
             "
                     >

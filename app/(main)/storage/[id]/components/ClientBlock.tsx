@@ -8,7 +8,7 @@ import Button from "@/app/components/UI/Button";
 import DeleteItemModal from "@/app/(main)/storage/[id]/components/DeleteItemModal";
 import ButtonBack from "@/app/components/UI/ButtonBack";
 import {format} from "date-fns";
-import ImageModal from "@/app/(main)/storage/[id]/components/ImageModal";
+import ImageModal from "@/app/components/UI/ImageModal";
 interface ClientBlockProps {
     categories: Category[] ,
     item: Item,
@@ -48,17 +48,18 @@ const ClientBlock:FC<ClientBlockProps> = ({
                     rounded-lg
                     bg-white
                     text-gray-500
-                    w-1/2
+                    w-full
+                    sm:max-w-xl
                 "
                 >
-                    <div className="flex flex-row justify-between">
+                    <div className="flex flex-col sm:flex-row gap-2 justify-between">
                         <div>
                             <ButtonBack/>
                             <ReactMarkdown
                                 className="text-xl font-bold">{item.name + " - " + String(item.quantity)}</ReactMarkdown>
                             <ReactMarkdown className="text-xs mb-2">{category.description}</ReactMarkdown>
                             <ReactMarkdown>{item.description}</ReactMarkdown>
-                            <ReactMarkdown className="text-xs text-sky-500 mt-10">{`${user.name} ${format(new Date(item.createdAt), "dd/MM/yyyy HH:mm")}`}</ReactMarkdown>
+                            <ReactMarkdown className="text-xs text-sky-500 sm:mt-10">{`${user.name} ${format(new Date(item.createdAt), "dd/MM/yyyy HH:mm")}`}</ReactMarkdown>
                         </div>
                         {(item.image && item.image !== '') &&
                             <div className="w-fit overflow-hidden rounded-md" onClick={() => setIsModalImageOpen(true)}>

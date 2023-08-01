@@ -32,7 +32,7 @@ const Page: FC<PageProps> = async ({
                     justify-center
                     flex-col
                     gap-6
-                    my-6
+                    sm:my-6
                     items-center
                     w-full
                 "

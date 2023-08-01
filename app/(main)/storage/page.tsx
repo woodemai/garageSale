@@ -11,9 +11,7 @@ const Page = async () => {
                 items-center
                 justify-center
                 w-full
-                mx-auto
-                m-2
-                p-2
+                mt-4
             "
         >
             <List
