@@ -13,8 +13,6 @@ const Main = async () => {
                 flex-col
                 items-center
                 w-full
-                h-full
-                mt-4
             "
         >
             <div className="w-full">
@@ -23,7 +21,7 @@ const Main = async () => {
                         text-3xl
                         font-bold
                         text-center
-                        mb-12
+                        my-8
                     "
                 >
                     Main menu
@@ -35,8 +33,8 @@ const Main = async () => {
                     sm:flex-row
                     justify-center
                     items-start
-                    h-full
                     gap-8
+                    mb-20
                     w-full
                 "
                 >

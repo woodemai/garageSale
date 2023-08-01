@@ -34,12 +34,8 @@ L
 next.config.js,8/1/811a6d5a2e04fadb44d8eec365f2fa8af5c4facf
 Q
 !app/components/UI/ButtonClose.tsx,2/f/2fca5322a5d8581f3868d5dc9daf1d4ac45a4036
-E
-app/(main)/layout.tsx,c/c/cc0da857eeda1d767a64437f4ef04dcf66d072a4
 P
  app/components/UI/ButtonBack.tsx,2/3/23ae2048da9ad017b2c7203e2fab265c37c8a1d1
-Y
-)app/components/sidebar/SidebarElement.tsx,8/d/8d2856acc938566e68f03120db533cb18ecb41cc
 d
 4app/(main)/storage/[id]/components/EditItemModal.tsx,0/a/0abe517602cd69c1c33ed533373c8cd18a9a1090
 U
@@ -76,5 +72,3 @@ L
 app/(main)/settings/page.tsx,1/c/1c7fc2aa10eb84733c12627fd81616e1cde5c14a
 R
 "app/(site)/components/AuthForm.tsx,c/f/cfd4676ebf214ab319d0aeeb1815df13e8f9f413
-R
-"app/components/sidebar/Sidebar.tsx,9/8/981a80dc6f18adfb245a5338f703f59649fe2b2a

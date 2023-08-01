@@ -12,6 +12,7 @@ const Page = async () => {
                 justify-center
                 w-full
                 mt-4
+                mb-20
             "
         >
             <List
