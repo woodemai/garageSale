@@ -7,13 +7,13 @@ interface CategoryBlockProps {
     category: Category
 }
 
-const CategoryBlock:FC<CategoryBlockProps> = ({
-    category
-                                              }) => {
+const CategoryBlock: FC<CategoryBlockProps> = ({
+                                                   category
+                                               }) => {
     return (
-       <Link href={`/categories/${category.id}`}>
-           <div
-               className="
+        <Link
+            href={`/categories/${category.id}`}
+            className="
                 flex
                 flex-row
                 justify-center
@@ -23,7 +23,12 @@ const CategoryBlock:FC<CategoryBlockProps> = ({
                 bg-white
                 p-4
                 w-full
-                min-w-full
+                mx-auto
+                sm:max-w-sm
+                md:max-w-md
+                lg:max-w-lg
+                xl:max-w-xl
+                2xl:max-w-2xl
                 cursor-pointer
                 text-gray-500
                 hover:bg-white
@@ -31,9 +36,9 @@ const CategoryBlock:FC<CategoryBlockProps> = ({
                 hover:shadow-md
                 transition-all duration-100
             "
-           >
-               <div
-                   className="
+        >
+            <div
+                className="
                     flex
                     flex-col
                     gap-4
@@ -43,13 +48,14 @@ const CategoryBlock:FC<CategoryBlockProps> = ({
                     w-full
                     mx-auto
                 "
-               >
-                   <ReactMarkdown className="font-bold w-full mx-auto">{category.name}</ReactMarkdown>
-                   <ReactMarkdown className="text-xs w-full mx-auto">{category.description}</ReactMarkdown>
-               </div>
-           </div>
-       </Link>
-    );
+            >
+                <ReactMarkdown className="font-bold w-full mx-auto">{category.name}</ReactMarkdown>
+                <ReactMarkdown className="text-xs w-full mx-auto">{category.description}</ReactMarkdown>
+
+            </div>
+        </Link>
+    )
+        ;
 };
 
 export default CategoryBlock;

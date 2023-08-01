@@ -14,11 +14,9 @@ const Page = async () => {
                 flex
                 flex-col
                 items-center
-                justify-center
+                justify-start
                 w-full
-                mx-auto
                 m-2
-                p-2
             "
         >
             <List

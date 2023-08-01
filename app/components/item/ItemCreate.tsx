@@ -49,7 +49,7 @@ const ItemCreate: FC<CreateItemProps> = ({
         setImageUrl(result?.info?.secure_url)
     }
     return (
-        <div className="bg-white rounded-md p-4">
+        <div className="bg-white rounded-lg w-full sm:max-w-md p-4">
             <ReactMarkdown
                 className="
                                 text-left
