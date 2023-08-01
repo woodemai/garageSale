@@ -1,10 +1,10 @@
 import React from 'react';
-import prismadb from "@/app/libs/prismadb";
+import prisma from "@/app/libs/prismadb";
 import List from "@/app/components/UI/List";
 import CategoryBlock from "@/app/components/category/CategoryBlock";
 
 const Page = async () => {
-    const categories = await prismadb.category.findMany({
+    const categories = await prisma.category.findMany({
         orderBy: {
             updatedAt: 'desc'
         }
@@ -18,6 +18,7 @@ const Page = async () => {
                 w-full
                 mb-20
                 sm:mb-0
+                sm:mt-4
             "
         >
             <List
