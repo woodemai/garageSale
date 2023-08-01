@@ -18,13 +18,14 @@ const Sidebar = () => {
     return (
         <div
             className="
+                hidden
                 py-2
                 border-r
                 h-screen
                 border-gray-200
                 flex-col
                 items-center
-                flex
+                sm:flex
                 gap-2
                 bg-white
                 sticky

@@ -1,14 +1,13 @@
 import {ReactNode} from "react";
 import Sidebar from "@/app/components/sidebar/Sidebar";
+import MobileFooter from "@/app/components/sidebar/MobileFooter";
 
 export default function Layout({
-    children,
-    modal
-                               }:{
-    children:ReactNode,
-    modal:ReactNode
+                                   children,
+                               }: {
+    children: ReactNode,
 }) {
-    return(
+    return (
         <div
             className="
                 flex
@@ -17,7 +16,7 @@ export default function Layout({
             "
         >
             <Sidebar/>
-            {modal}
+            <MobileFooter/>
             {children}
         </div>
     )

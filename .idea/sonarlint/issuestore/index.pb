@@ -34,10 +34,6 @@ P
  app/components/UI/ButtonBack.tsx,2/3/23ae2048da9ad017b2c7203e2fab265c37c8a1d1
 Q
 !app/components/UI/ButtonClose.tsx,2/f/2fca5322a5d8581f3868d5dc9daf1d4ac45a4036
-E
-app/(main)/layout.tsx,c/c/cc0da857eeda1d767a64437f4ef04dcf66d072a4
-Y
-)app/components/sidebar/SidebarElement.tsx,8/d/8d2856acc938566e68f03120db533cb18ecb41cc
 U
 %app/components/sidebar/SidebarNav.tsx,2/a/2a66e8615453e52fad2dfccd34499dd9e2f824a9
 K
@@ -76,5 +72,3 @@ I
 app/api/register/route.ts,0/d/0dee68660eb6f86ef6f5ece1d0ef2626afb95a07
 4
 .env,3/c/3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
-R
-"app/components/sidebar/Sidebar.tsx,9/8/981a80dc6f18adfb245a5338f703f59649fe2b2a
