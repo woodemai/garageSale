@@ -18,7 +18,7 @@ const CategoryBlock: FC<CategoryBlockProps> = ({
                 flex-row
                 justify-center
                 items-center
-                rounded-md
+                sm:rounded-lg
                 shadow-sm
                 bg-white
                 p-4

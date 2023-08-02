@@ -16,6 +16,7 @@ const Page = async () => {
                 items-center
                 justify-start
                 w-full
+                mt-6
                 mb-20
                 sm:mb-0
             "

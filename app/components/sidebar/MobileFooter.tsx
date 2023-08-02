@@ -15,6 +15,8 @@ const MobileFooter = () => {
     return (
         <div
             className="
+                border-t-gray-200
+                border-t
                 sm:hidden
                 fixed
                 bottom-0

@@ -24,8 +24,6 @@ Q
 !app/(main)/storage/staticProps.ts,c/1/c16e3500da21ddb6061ce8f858a5c1d4dda9af87
 L
 app/components/UI/Button.tsx,1/4/141824c89a036bda6a492cd5975412f2c9017ad3
->
-next.config.js,8/1/811a6d5a2e04fadb44d8eec365f2fa8af5c4facf
 E
 app/api/item/route.ts,9/3/939d90d8bd65ac0dc9ebca3eb8988c96a92913f8
 L
@@ -50,22 +48,16 @@ k
 ;app/(main)/categories/[id]/components/CategoryEditModal.tsx,4/d/4d82c7c95cb24fe859dc69fd048bea829b59e135
 f
 6app/(main)/storage/[id]/components/DeleteItemModal.tsx,0/5/05038689a129f30f4a142a7c7b961a7cbac79b05
-R
-"app/components/item/ItemDelete.tsx,5/8/58b6b74b827c8a7bbab5912c3b132dc2cb975b7a
 <
 package.json,7/0/7030d0b2f71b999ff89a343de08c414af32fc93a
 N
 app/api/category/[id]/route.ts,2/2/22ecf1b49b6a8851fe7a7879c9e172edd40446a2
 I
 app/api/category/route.ts,b/c/bcebd201f3f80c8f4ca00f561f86a2ce3578e2d8
-R
-"app/(site)/components/AuthForm.tsx,c/f/cfd4676ebf214ab319d0aeeb1815df13e8f9f413
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 L
 app/(main)/settings/page.tsx,1/c/1c7fc2aa10eb84733c12627fd81616e1cde5c14a
-m
-=app/(main)/categories/[id]/components/CategoryDeleteModal.tsx,4/5/45aa29bdb663c99d4d1a2d3b2bce47ab0d2291d2
 S
 #app/api/auth/[...nextauth]/route.ts,b/5/b5525e88675781f6170fcf71bc017d2497318972
 I

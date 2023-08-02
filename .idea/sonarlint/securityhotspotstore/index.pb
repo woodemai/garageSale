@@ -30,8 +30,6 @@ L
 app/components/UI/Select.tsx,9/5/953571a4dc6a32e0b37579553b61e63bc7a6bc21
 L
 app/components/UI/Button.tsx,1/4/141824c89a036bda6a492cd5975412f2c9017ad3
->
-next.config.js,8/1/811a6d5a2e04fadb44d8eec365f2fa8af5c4facf
 Q
 !app/components/UI/ButtonClose.tsx,2/f/2fca5322a5d8581f3868d5dc9daf1d4ac45a4036
 P
@@ -58,10 +56,6 @@ k
 ;app/(main)/categories/[id]/components/CategoryEditModal.tsx,4/d/4d82c7c95cb24fe859dc69fd048bea829b59e135
 f
 6app/(main)/storage/[id]/components/DeleteItemModal.tsx,0/5/05038689a129f30f4a142a7c7b961a7cbac79b05
-R
-"app/components/item/ItemDelete.tsx,5/8/58b6b74b827c8a7bbab5912c3b132dc2cb975b7a
-m
-=app/(main)/categories/[id]/components/CategoryDeleteModal.tsx,4/5/45aa29bdb663c99d4d1a2d3b2bce47ab0d2291d2
 4
 .env,3/c/3c84dcdc6bbe3d7817c49dcdc327b926fea1808a
 S
@@ -70,5 +64,3 @@ S
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 L
 app/(main)/settings/page.tsx,1/c/1c7fc2aa10eb84733c12627fd81616e1cde5c14a
-R
-"app/(site)/components/AuthForm.tsx,c/f/cfd4676ebf214ab319d0aeeb1815df13e8f9f413
