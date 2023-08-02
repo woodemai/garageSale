@@ -16,8 +16,6 @@ C
 app/(site)/page.tsx,0/f/0f5325d439a7f4e6763dc430e43edb7392063a9c
 =
 middleware.ts,3/0/306298667dd8f63c95afc94693a7bfe5a20f54f5
-K
-app/components/UI/Input.tsx,5/c/5c3fc77b900a4cf1e2d908472880b0d2d096a276
 I
 app/api/register/route.ts,0/d/0dee68660eb6f86ef6f5ece1d0ef2626afb95a07
 >

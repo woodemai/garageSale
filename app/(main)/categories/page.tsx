@@ -1,14 +1,10 @@
 import React from 'react';
-import prismadb from "@/app/libs/prismadb";
 import List from "@/app/components/UI/List";
 import CategoryBlock from "@/app/components/category/CategoryBlock";
+import getCategories from "@/app/actions/getCategories";
 
 const Page = async () => {
-    const categories = await prismadb.category.findMany({
-        orderBy: {
-            updatedAt: 'desc'
-        }
-    });
+    const categories = await getCategories();
     return (
         <div className="
                 flex

@@ -51,7 +51,6 @@ const CategoryBlock: FC<CategoryBlockProps> = ({
             >
                 <ReactMarkdown className="font-bold w-full mx-auto">{category.name}</ReactMarkdown>
                 <ReactMarkdown className="text-xs w-full mx-auto">{category.description}</ReactMarkdown>
-
             </div>
         </Link>
     )
