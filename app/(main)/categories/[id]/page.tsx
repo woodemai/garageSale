@@ -1,7 +1,9 @@
 import React, {FC} from "react";
-import prisma from "@/app/libs/prismadb";
 import CategoryClientBlock from "@/app/(main)/categories/[id]/components/CategoryClientBlock";
 import ItemList from "@/app/components/UI/ItemList";
+import List from "@/app/components/UI/List";
+import ItemBlock from "@/app/components/item/ItemBlock";
+import getCategoryWithItems from "@/app/actions/getCategoryWithItems";
 
 interface PageProps {
     params: {
@@ -12,16 +14,7 @@ interface PageProps {
 const Page: FC<PageProps> = async ({
                                        params: {id}
                                    }) => {
-    const category = await prisma.category.findUnique({
-        where: {id},
-        include: {
-            items: {
-                orderBy: {
-                    updatedAt: 'desc'
-                }
-            }
-        }
-    });
+    const category = await getCategoryWithItems(id);
     if (category) {
         return (
             <>

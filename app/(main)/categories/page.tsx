@@ -1,4 +1,5 @@
 import React from 'react';
+import prisma from "@/app/libs/prismadb";
 import List from "@/app/components/UI/List";
 import CategoryBlock from "@/app/components/category/CategoryBlock";
 import getCategories from "@/app/actions/getCategories";
@@ -15,6 +16,7 @@ const Page = async () => {
                 mt-6
                 mb-20
                 sm:mb-0
+                sm:mt-4
             "
         >
             <List

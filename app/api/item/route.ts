@@ -34,8 +34,8 @@ export async function POST(
             return NextResponse.json(item, {status: 200});
         }
     } catch (error: any) {
-        console.log(error);
-        return new NextResponse('Creating item error', {status: 500});
+        console.log(error, "Creating item error");
+        return new NextResponse('Internal error', {status: 500});
     }
 }
 export async function PUT(
@@ -55,7 +55,7 @@ export async function PUT(
             }
         });
         if (!user) {
-            return new NextResponse('Cannot find user', {status: 500});
+            return new NextResponse('Unauthenticated', {status: 401});
         }
         const item = await prisma.item.update({
             where: {
@@ -74,7 +74,7 @@ export async function PUT(
             return NextResponse.json(item, {status: 200});
         }
     } catch (error: any) {
-        console.log(error);
-        return new NextResponse('Creating item error', {status: 500});
+        console.log(error, 'Updating item error');
+        return new NextResponse('Internal error', {status: 500});
     }
 }

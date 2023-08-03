@@ -18,7 +18,7 @@ export async function DELETE (
             return new NextResponse('Item was not found', {status: 404});
         }
     } catch (error: any) {
-        console.log(error, 'Deleting category error');
+        console.log(error, 'Deleting item error');
         return new NextResponse('Internal error', {status: 500});
     }
 }
