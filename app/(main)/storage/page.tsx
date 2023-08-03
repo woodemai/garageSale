@@ -1,9 +1,13 @@
-import ItemBlock from "@/app/components/item/ItemBlock";
-import List from "@/app/components/UI/List";
 import getItems from "@/app/actions/getItems";
+import ItemList from "@/app/components/UI/ItemList";
+
 export const dynamic = 'force-dynamic';
+
+
 const Page = async () => {
+
     const items = await getItems();
+
     return (
         <div className="
                 flex
@@ -15,11 +19,11 @@ const Page = async () => {
                 mb-20
             "
         >
-            <List
+            <ItemList
                 items={items}
-                element={(item) => <ItemBlock item={item}/>}
                 title={`Items - ` + items.length}
                 noItemsErrorMessage="No items found"
+                search
             />
         </div>
     );

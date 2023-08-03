@@ -1,5 +1,6 @@
 import React, {FC} from "react";
 import CategoryClientBlock from "@/app/(main)/categories/[id]/components/CategoryClientBlock";
+import ItemList from "@/app/components/UI/ItemList";
 import List from "@/app/components/UI/List";
 import ItemBlock from "@/app/components/item/ItemBlock";
 import getCategoryWithItems from "@/app/actions/getCategoryWithItems";
@@ -29,7 +30,7 @@ const Page: FC<PageProps> = async ({
                 "
                 >
                     <CategoryClientBlock category={category}/>
-                    <List items={category.items} element={(item) => <ItemBlock item={item}/>} title="Items"/>
+                    <ItemList items={category.items} search noItemsErrorMessage="No items found" title="Items"/>
                 </div>
             </>
         )

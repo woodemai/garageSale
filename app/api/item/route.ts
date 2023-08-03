@@ -1,5 +1,5 @@
 import {NextRequest, NextResponse} from "next/server";
-import prismadb from "@/app/libs/prismadb";
+import prisma from "@/app/libs/prismadb";
 
 export async function POST(
     request: NextRequest
@@ -12,7 +12,7 @@ export async function POST(
             return new NextResponse('Missing info', {status: 400});
         }
         const image = json.imageUrl ? json.imageUrl : '';
-        const user = await prismadb.user.findUnique({
+        const user = await prisma.user.findUnique({
              where: {
                  email
              }
@@ -20,7 +20,7 @@ export async function POST(
         if (!user) {
             return new NextResponse('Cannot find user', {status: 500});
         }
-        const item = await prismadb.item.create({
+        const item = await prisma.item.create({
             data: {
                 name,
                 description,
@@ -49,7 +49,7 @@ export async function PUT(
             return new NextResponse('Missing info', {status: 400});
         }
         const image = json.imageUrl ? json.imageUrl : '';
-        const user = await prismadb.user.findUnique({
+        const user = await prisma.user.findUnique({
             where: {
                 email
             }
@@ -57,7 +57,7 @@ export async function PUT(
         if (!user) {
             return new NextResponse('Unauthenticated', {status: 401});
         }
-        const item = await prismadb.item.update({
+        const item = await prisma.item.update({
             where: {
                 id
             },

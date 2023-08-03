@@ -2,13 +2,10 @@ import React from 'react';
 import prisma from "@/app/libs/prismadb";
 import List from "@/app/components/UI/List";
 import CategoryBlock from "@/app/components/category/CategoryBlock";
+import getCategories from "@/app/actions/getCategories";
 
 const Page = async () => {
-    const categories = await prisma.category.findMany({
-        orderBy: {
-            updatedAt: 'desc'
-        }
-    });
+    const categories = await getCategories();
     return (
         <div className="
                 flex
@@ -16,6 +13,7 @@ const Page = async () => {
                 items-center
                 justify-start
                 w-full
+                mt-6
                 mb-20
                 sm:mb-0
                 sm:mt-4

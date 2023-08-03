@@ -1,52 +1,41 @@
 'use client';
 import clsx from "clsx";
-import {
-    FieldValues,
-    FieldErrors,
-    UseFormRegister
-} from "react-hook-form";
-import {FC} from "react";
+import {ChangeEventHandler, FC} from "react";
 
 interface InputProps {
-    label?: string,
+    label: string,
     id: string,
     type?: string,
     required?: boolean,
-    fullWidth?: boolean
-    register: UseFormRegister<FieldValues>,
-    errors: FieldErrors,
     disabled?: boolean
-    placeholder?: string
+    placeholder?: string,
+    onChange?: ChangeEventHandler<HTMLInputElement>,
 }
 
-const Input: FC<InputProps> = ({
-                                   label,
-                                   id,
-                                   type,
-                                   required,
-                                   register,
-                                   errors,
-                                   disabled,
-                                   placeholder,
-                                   fullWidth
-                               }) => {
+const Search: FC<InputProps> = ({
+                                    label,
+                                    id,
+                                    type,
+                                    required,
+                                    disabled,
+                                    placeholder,
+                                    onChange
+                                }) => {
     return (
         <div>
-            {label &&
-                <label
-                    className="
+            <label
+                className="
                     block
                     text-sm
                     font-medium
                     leading-6
                     text-gray-900
                 "
-                    htmlFor={id}
-                >
-                    {label}
-                </label>
-            }
-            <div className={clsx(label && "mt-2", fullWidth && "w-full")}>
+                htmlFor={id}
+            >
+                {label}
+            </label>
+            <div className="mt-2">
                 <input
                     placeholder={placeholder}
                     type={type}
@@ -54,7 +43,7 @@ const Input: FC<InputProps> = ({
                     required={required}
                     disabled={disabled}
                     autoComplete={id}
-                    {...register(id, {required})}
+                    onChange={onChange}
                     className={clsx(`
                         form-input
                         block
@@ -72,13 +61,11 @@ const Input: FC<InputProps> = ({
                         focus:ring-inset
                         focus:ring-sky-600
                         sm:text-sm
-                        sm:leading-6`,
-                        errors[id] && "focus:ring-rose-500",
-                        disabled && "opacity-50 cursor-default")}
+                        sm:leading-6`)}
                 />
             </div>
         </div>
     );
 };
 
-export default Input;
+export default Search;

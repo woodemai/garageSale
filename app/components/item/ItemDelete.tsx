@@ -26,10 +26,7 @@ const ItemCreate: FC<CreateItemProps> = ({
         axios.delete(`/api/item/${id}`)
             .then(() => toast.success("Item deleted!"))
             .catch(() => toast.error("Something went wrong"))
-            .finally(() => {
-                setIsLoading(false);
-                router.push('/storage')
-            })
+            .finally(() =>  router.push('/storage'))
     }
     return (
         <div className="bg-white rounded-md py-2 px-2">

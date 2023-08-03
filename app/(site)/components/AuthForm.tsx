@@ -49,14 +49,14 @@ const AuthForm = () => {
 
         if (variant === 'REGISTER') {
             axios.post('/api/register', data)
-                .then(() => signIn('credentials',{...data, redirect:false}))
+                .then(() => signIn('credentials',{...data, redirect:true}))
                 .catch(() => toast.error('Something went wrong!'))
                 .finally(() => setIsLoading(false));
         }
         if (variant === 'LOGIN') {
             signIn('credentials', {
                 ...data,
-                redirect: false
+                redirect: true
             })
                 .then((callback) => {
                     if (callback?.error) {
@@ -71,7 +71,7 @@ const AuthForm = () => {
     const socialAction = (action: string) => {
         setIsLoading(true);
 
-        signIn(action, {redirect: false})
+        signIn(action, {redirect: true})
             .then((callback) => {
                 if (callback?.error) {
                     toast.error("Invalid credentials!");

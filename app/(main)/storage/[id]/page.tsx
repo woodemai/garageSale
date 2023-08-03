@@ -17,16 +17,21 @@ const Page: FC<PageProps> = async ({
         where: {id},
         include: {
             user: true,
-            category: true
+            category: true,
+            comments: {
+                include: {
+                    sender: true
+                },
+                orderBy: {
+                    updatedAt: 'desc'
+                }
+            }
         }
 
     });
     if (item) {
-        const category = await item.category;
-        const user = await item.user;
-        if (category && user) {
-            return <ClientBlock categories={categories} item={item} category={category} user={user}/>
-        }
+            return <ClientBlock categories={categories} item={item}/>
+
     }
 };
 

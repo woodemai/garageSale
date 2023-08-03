@@ -49,6 +49,8 @@ model User {
   items          Item[]
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
+  sentComments   Comment[] @relation(name: "sender")
+  likedComments  Comment[]
 }
 
 model VerificationToken {
@@ -71,6 +73,7 @@ model Item {
   categoryId  String?
   user        User?     @relation(fields: [userId], references: [id])
   userId      String?
+  comments    Comment[]
 }
 
 model Category {
@@ -81,4 +84,18 @@ model Category {
   items       Item[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Comment {
+  id       String @id @default(cuid())
+  body     String
+  sender   User   @relation(name: "sender", fields: [senderId], references: [id])
+  senderId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  item   Item   @relation(fields: [itemId], references: [id])
+  itemId String
+  likers User[]
 }

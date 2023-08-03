@@ -18,7 +18,7 @@ const CategoryBlock: FC<CategoryBlockProps> = ({
                 flex-row
                 justify-center
                 items-center
-                rounded-md
+                sm:rounded-lg
                 shadow-sm
                 bg-white
                 p-4
@@ -51,7 +51,6 @@ const CategoryBlock: FC<CategoryBlockProps> = ({
             >
                 <ReactMarkdown className="font-bold w-full mx-auto">{category.name}</ReactMarkdown>
                 <ReactMarkdown className="text-xs w-full mx-auto">{category.description}</ReactMarkdown>
-
             </div>
         </Link>
     )

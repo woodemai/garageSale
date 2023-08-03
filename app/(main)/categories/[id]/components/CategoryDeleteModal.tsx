@@ -32,10 +32,7 @@ const CategoryDeleteModal: FC<CategoryDeleteModalProps> = ({
         axios.delete(`/api/category/${id}`)
             .then(() => toast.success("Category deleted!"))
             .catch(() => toast.error("Something went wrong"))
-            .finally(() => {
-                setIsLoading(false)
-                router.push('/storage')
-            })
+            .finally(() => router.push('/storage'))
     }
     return (
         <Modal onClose={onClose} isOpen={isOpen}>

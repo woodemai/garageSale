@@ -4,15 +4,17 @@ import ReactMarkdown from "react-markdown";
 interface ListProps<T> {
     items: T[],
     element: (item: T) => ReactNode,
-    title: string,
+    title?: string,
     noItemsErrorMessage?: string
+    search?: boolean
 }
 
 const List: FC<ListProps<any>> = ({
                                       items,
                                       element,
                                       title,
-                                      noItemsErrorMessage
+                                      noItemsErrorMessage,
+                                      search
                                   }) => {
     if (noItemsErrorMessage === undefined) noItemsErrorMessage = "";
     return (
@@ -33,17 +35,18 @@ const List: FC<ListProps<any>> = ({
             {items.length > 0
                 ?
                 <div className="w-full sm:max-w-2xl">
-                    <ReactMarkdown
-                        className="
+                    {title &&
+                        <ReactMarkdown
+                            className="
                             font-bold
                             text-xl
                             mb-6
                             text-center
                             sm:text-left
                         "
-                    >
-                        {title}
-                    </ReactMarkdown>
+                        >
+                            {title}
+                        </ReactMarkdown>}
                     <div
                         className="
                 flex
