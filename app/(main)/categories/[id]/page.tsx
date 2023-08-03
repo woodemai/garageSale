@@ -1,8 +1,6 @@
 import React, {FC} from "react";
 import prisma from "@/app/libs/prismadb";
 import CategoryClientBlock from "@/app/(main)/categories/[id]/components/CategoryClientBlock";
-import List from "@/app/components/UI/List";
-import ItemBlock from "@/app/components/item/ItemBlock";
 import ItemList from "@/app/components/UI/ItemList";
 
 interface PageProps {

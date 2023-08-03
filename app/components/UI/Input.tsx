@@ -8,10 +8,11 @@ import {
 import {FC} from "react";
 
 interface InputProps {
-    label: string,
+    label?: string,
     id: string,
     type?: string,
     required?: boolean,
+    fullWidth?: boolean
     register: UseFormRegister<FieldValues>,
     errors: FieldErrors,
     disabled?: boolean
@@ -26,23 +27,26 @@ const Input: FC<InputProps> = ({
                                    register,
                                    errors,
                                    disabled,
-                                   placeholder
+                                   placeholder,
+                                   fullWidth
                                }) => {
     return (
         <div>
-            <label
-                className="
+            {label &&
+                <label
+                    className="
                     block
                     text-sm
                     font-medium
                     leading-6
                     text-gray-900
                 "
-                htmlFor={id}
-            >
-                {label}
-            </label>
-            <div className="mt-2">
+                    htmlFor={id}
+                >
+                    {label}
+                </label>
+            }
+            <div className={clsx(label && "mt-2", fullWidth && "w-full")}>
                 <input
                     placeholder={placeholder}
                     type={type}

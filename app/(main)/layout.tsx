@@ -12,7 +12,8 @@ export default function Layout({
             className="
                 flex
                 flex-row
-                bg-gray-100
+                bg-white
+                sm:bg-gray-100
             "
         >
             <Sidebar/>
