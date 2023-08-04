@@ -38,7 +38,7 @@ const CreateCommentForm: FC<CreateItemProps> = ({
             .finally(() => setIsLoading(false))
     }
     return (
-        <div className="bg-white rounded-lg sm:max-w-md mt-4">
+        <div className="bg-white p-2 rounded-lg sm:max-w-md my-4">
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="
@@ -48,7 +48,6 @@ const CreateCommentForm: FC<CreateItemProps> = ({
                     flex-nowrap
                     gap-4
                     w-full
-
                 "
             >
                 <div className="w-full">

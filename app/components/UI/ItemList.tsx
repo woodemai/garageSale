@@ -28,7 +28,7 @@ const List: FC<ListProps> = ({
             const quantityFilter = item.quantity.toString().includes(search)
             return nameFilter || descriptionFilter || quantityFilter;
         })])
-    }, [searchValue])
+    }, [searchValue, items])
     if (noItemsErrorMessage === undefined) noItemsErrorMessage = "";
     return (
         <div
