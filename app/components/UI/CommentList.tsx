@@ -37,9 +37,9 @@ const CommentList: FC<ListProps> = ({
                         className="
                             font-bold
                             text-xl
-                            mb-6
                             text-center
                             sm:text-left
+                            mb-2
                         "
                     >
                         {title}

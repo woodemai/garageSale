@@ -30,8 +30,36 @@ const Page: FC<PageProps> = async ({
 
     });
     if (item) {
-            return <ClientBlock categories={categories} item={item}/>
-
+        return (
+            <div
+                className="
+                    flex
+                    flex-col
+                    gap-6
+                    justify-center
+                    items-center
+                    w-full
+                    mb-20
+                "
+            >
+                <div
+                    className="
+                    sm:mt-10
+                    flex
+                    flex-col
+                    gap-2
+                    sm:p-4
+                    sm:rounded-lg
+                    sm:bg-white
+                    text-gray-500
+                    w-full
+                    sm:max-w-xl
+                "
+                >
+                    <ClientBlock categories={categories} item={item}/>
+                </div>
+            </div>
+        )
     }
 };
 
