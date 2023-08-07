@@ -44,7 +44,8 @@ const Search: FC<InputProps> = ({
                     autoComplete={id}
                     onChange={onChange}
                     className={clsx(`
-                        bg-transparent
+                        bg-white
+                        dark:bg-transparent
                         form-input
                         block
                         w-full

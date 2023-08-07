@@ -7,6 +7,11 @@ const Page = () => {
                 justify-center
                 items-center
                 w-full
+                pt-4
+                bg-white
+                dark:bg-gray-900
+                sm:bg-gray-100
+                dark:sm:bg-gray-950
             "
         >
             <ToggleThemeButton/>

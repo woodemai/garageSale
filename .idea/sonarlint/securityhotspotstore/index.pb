@@ -16,8 +16,6 @@ Q
 !app/components/UI/ButtonClose.tsx,2/f/2fca5322a5d8581f3868d5dc9daf1d4ac45a4036
 P
  app/components/UI/ButtonBack.tsx,2/3/23ae2048da9ad017b2c7203e2fab265c37c8a1d1
-K
-app/components/UI/Modal.tsx,8/c/8c0cac3d296ef46d6b103e77076427a420628d2f
 P
  app/components/item/ItemEdit.tsx,d/1/d12c2a0d3fcc2aec9646382e7f62aee4237a0653
 N

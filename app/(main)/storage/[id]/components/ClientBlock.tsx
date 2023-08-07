@@ -38,13 +38,9 @@ const ClientBlock: FC<ClientBlockProps> = ({
                     flex
                     flex-col
                     gap-2
-                    p-4
                     sm:p-0
                     rounded-lg
-                    bg-white
-                    text-gray-500
                     w-full
-                    sm:max-w-xl
                     ">
                 <div className="flex flex-col sm:flex-row gap-2 justify-between">
                     <div>
@@ -82,6 +78,7 @@ const ClientBlock: FC<ClientBlockProps> = ({
                                     flex
                                     flex-col
                                     gap-2
+                                    mb-4
                                 "
                 >
                     <Button fullWidth onClick={() => setIsModalEditOpen(true)}>Edit</Button>

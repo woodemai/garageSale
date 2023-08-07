@@ -15,20 +15,12 @@ const ImageModal:FC<ImageModalProps> = ({
                                         }) => {
     return (
         <Modal onClose={onClose} isOpen={isOpen}>
-            <div className="w-fit overflow-hidden rounded-md">
+            <div className="h-96 m-96 max-h-screen">
                 <Image
                     src={imageUrl}
                     alt={'image'}
-                    width={512}
-                    height={512}
-                    className="
-                                shadow-sm
-                                object-cover
-                                hover:scale-110
-                                cursor-pointer
-                                transition
-                                translate
-                            "
+                    className="object-cover z-1"
+                    fill
                 />
             </div>
         </Modal>

@@ -22,36 +22,11 @@ const ToggleThemeButton = () => {
         const currentTheme = theme === 'system' ? systemTheme : theme;
         if (currentTheme === 'dark') {
             return (
-                <button className="w-fit h-fit text-blue-500" onClick={() => setTheme('light')}>
-                    <BsMoonStars/>
-                </button>
-            )
-        } else {
-            return (
                 <button
-                    className="w-fit h-fit text-yellow-500 text-right"
-                    onClick={() => setTheme('dark')}>
-                    <CgSun/>
-                </button>
-            )
-        }
-    }
-    return (
-        <div className="
-                bg-white
-                dark:bg-gray-900
-                px-8
-                py-2
-                sm:rounded-xl
-                text-left
-                w-full
-                sm:w-fit
-            "
-        >
-            <ReactMarkdown>Change theme</ReactMarkdown>
-            <div className="
+                    onClick={() => setTheme('light')}
+                    className="
                     mt-4
-                    w-full
+                    w-28
                     h-10
                     rounded-full
                     ring-1
@@ -67,10 +42,67 @@ const ToggleThemeButton = () => {
                     dark:text-right
                     bg-gray-100
                     dark:bg-gray-950
+
                 "
-            >
-                {renderThemeChanger()}
-            </div>
+                >
+                    <div className="w-fit h-fit text-blue-500">
+                        <BsMoonStars/>
+                    </div>
+                </button>
+            )
+        } else {
+            return (
+                <button
+                    onClick={() => setTheme('dark')}
+                    className="
+                    mt-4
+                    h-10
+                    rounded-full
+                    ring-1
+                    ring-inset
+                    ring-gray-200
+                    dark:ring-gray-900
+                    p-2
+                    px-4
+                    flex
+                    justify-start
+                    dark:justify-end
+                    items-center
+                    dark:text-right
+                    bg-gray-100
+                    dark:bg-gray-950
+                    w-28
+                "
+                >
+                    <div
+                        className="w-fit h-fit text-yellow-500 text-right"
+                    >
+                        <CgSun/>
+                    </div>
+                </button>
+            )
+        }
+    }
+    return (
+        <div className="
+                bg-white
+                dark:bg-gray-900
+                px-8
+                py-2
+                rounded-xl
+                text-left
+                w-full
+                sm:w-fit
+                max-w-fit
+                flex
+                flex-row
+                justify-between
+                items-center
+                gap-x-4
+            "
+        >
+            <ReactMarkdown className="whitespace-nowrap inline-block">Change theme</ReactMarkdown>
+            {renderThemeChanger()}
         </div>
     )
 }

@@ -35,10 +35,7 @@ const Sidebar = () => {
                 left-0
             "
         >
-            <SidebarElement
-                disabled icon={GiHomeGarage} href='/main'
-                xl
-            />
+            <GiHomeGarage className="text-3xl text-gray-500 dark:text-gray-600 mb-4"/>
             <SidebarNav>
                 <SidebarElement
                     selected={currentPathname.includes('/main')}

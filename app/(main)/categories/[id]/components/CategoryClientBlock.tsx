@@ -33,6 +33,8 @@ const CategoryClientBlock: FC<CategoryClientBlockProps> = ({
                     w-full
                     sm:max-w-2xl
                     bg-white
+                    dark:bg-gray-900
+                    dark:text-gray-100
                 `}
             >
 

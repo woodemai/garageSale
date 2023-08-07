@@ -35,11 +35,9 @@ const List: FC<ListProps> = ({
             className="
                 mx-auto
                 w-full
-                sm:max-w-sm
-                md:max-w-md
-                lg:max-w-lg
-                xl:max-w-xl
-                2xl:max-w-2xl
+                sm:max-w-lg
+                md:max-w-xl
+                xl:max-w-2xl
                 flex
                 flex-col
                 items-center

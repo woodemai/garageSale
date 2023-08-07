@@ -11,7 +11,7 @@ const SidebarNav: FC<SidebarNavProps> = ({children}) => {
                 flex-col
                 gap-1
                 border-t
-                mx  -4
+                mx-2
                 py-2
                 border-t-gray-200
                 dark:border-t-gray-700

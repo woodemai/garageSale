@@ -25,6 +25,7 @@ const ItemBlock: FC<ItemProps> = ({
                 rounded-lg
                 shadow-sm
                 bg-white
+                text-gray-700
                 dark:bg-gray-900
                 dark:text-gray-100
                 p-6
@@ -32,7 +33,6 @@ const ItemBlock: FC<ItemProps> = ({
                 w-full
                 min-w-full
                 cursor-pointer
-                text-gray-200
                 hover:bg-white
                 hover:text-gray-900
                 hover:shadow-md

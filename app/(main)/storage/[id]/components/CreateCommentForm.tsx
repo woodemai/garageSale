@@ -38,7 +38,7 @@ const CreateCommentForm: FC<CreateItemProps> = ({
             .finally(() => setIsLoading(false))
     }
     return (
-        <div className="bg-white p-2 rounded-lg sm:max-w-md my-4">
+        <div className="w-full rounded-lg mb-4">
             <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="
@@ -46,7 +46,7 @@ const CreateCommentForm: FC<CreateItemProps> = ({
                     flex-row
                     items-center
                     flex-nowrap
-                    gap-4
+                    gap-x-4
                     w-full
                 "
             >
@@ -54,7 +54,8 @@ const CreateCommentForm: FC<CreateItemProps> = ({
                     <Input disabled={isLoading} id="body" fullWidth register={register} errors={errors}
                            placeholder="Start typing..." required/>
                 </div>
-                <button type='submit' className="text-xl" disabled={isLoading}><BiSend/></button>
+                <button type='submit' className="text-2xl text-sky-500 hover:text-sky-700 transition-all duration-200"
+                        disabled={isLoading}><BiSend/></button>
             </form>
         </div>
     );
