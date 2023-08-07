@@ -1,0 +1,85 @@
+{
+  "main": {
+    "SignIn": "Войдите в ваш аккаунт"
+  },
+  "menu": {
+    "title": "Главное меню"
+  },
+  "profile": {
+    "title": "Профиль",
+    "signOut": "Выйти"
+  },
+  "createItemBlock": {
+    "title": "Создать предмет",
+    "name": "Название",
+    "description": "Описание",
+    "quantity": "Количество",
+    "category": "Категория",
+    "choose": "Выбрать катерогию",
+    "photo": "Выбрать фото",
+    "another": "Выбрать другое фото",
+    "create": "Создать",
+    "success": "Предмет создан",
+    "error": "Что-то пошло не так"
+  },
+  "createCategoryBlock": {
+    "title": "Создать категорию",
+    "name": "Название",
+    "description": "Описание",
+    "photo": "Выберите фото",
+    "another": "Выбрать другое фото",
+    "create": "Создать",
+    "success": "Категория создана",
+    "error": "Что-то пошло не так"
+  },
+  "storage": {
+    "items": "Предметы",
+    "noItems": "Предметы не найдены"
+  },
+  "itemList": {
+    "search": "Поиск",
+    "placeholder": "Начните печатать...",
+    "notFound": "Предметы не найдены",
+    "title": "Предметы"
+  },
+  "categories": {
+    "title": "Категории",
+    "notFound": "Категории не найдены"
+  },
+  "authForm": {
+    "error": "Что-то пошло не так",
+    "invalid": "Неверные данные",
+    "success": "Вход выполнен",
+    "name": "Имя",
+    "placeholderName": "Иван",
+    "email": "Почта",
+    "placeholderEmail": "ivan@mail.com",
+    "password": "Пароль",
+    "signIn": "Войти",
+    "register": "Создать аккаунт",
+    "continue": "Или продолжить с",
+    "new": "Первый раз в Garage Sale?",
+    "have": "Уже есть аккаунт?",
+    "create": "Создать аккаунт",
+    "login": "Войти"
+  },
+  "item": {
+    "edit": "Изменить",
+    "delete": "Удалить",
+    "comments": "Комментарии",
+    "noComments": "Будьте первыми, кто напишет комментарий!"
+  },
+  "createComment": {
+    "success": "Сообщение отправлено",
+    "error": "Что-то пошло не так",
+    "placeholder": "Начните печатать..."
+  },
+  "categoryId": {
+    "edit": "Изменить",
+    "delete": "Удалить"
+  },
+  "settings": {
+    "theme": "Сменить тему",
+    "success": "Тема изменена"
+  }
+}

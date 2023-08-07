@@ -4,18 +4,15 @@ import ReactMarkdown from "react-markdown";
 import Search from "@/app/components/UI/Search";
 import {Item} from "@prisma/client";
 import ItemBlock from "@/app/components/item/ItemBlock";
+import {useTranslations} from "next-intl";
 
 interface ListProps {
     items: Item[],
-    title?: string,
-    noItemsErrorMessage?: string
     search?: boolean
 }
 
 const List: FC<ListProps> = ({
                                  items,
-                                 title,
-                                 noItemsErrorMessage,
                                  search
                              }) => {
     const [searchValue, setSearchValue] = useState("");
@@ -29,7 +26,7 @@ const List: FC<ListProps> = ({
             return nameFilter || descriptionFilter || quantityFilter;
         })])
     }, [searchValue, items])
-    if (noItemsErrorMessage === undefined) noItemsErrorMessage = "";
+    const t = useTranslations('itemList');
     return (
         <div
             className="
@@ -47,7 +44,7 @@ const List: FC<ListProps> = ({
         >
 
             <div className="w-full sm:max-w-2xl">
-                {title && searchItems.length > 0 &&
+                {searchItems.length > 0 &&
                     <ReactMarkdown
                         className="
                             font-bold
@@ -57,12 +54,12 @@ const List: FC<ListProps> = ({
                             sm:text-left
                         "
                     >
-                        {title}
+                        {t('title')}
                     </ReactMarkdown>}
                 {search &&
                     <div className="my-2">
-                        <Search placeholder="Find your item"
-                                label="Search"
+                        <Search placeholder={t('placeholder')}
+                                label={t('search')}
                                 id="search"
                                 onChange={(e) => setSearchValue(e.target.value)}
                         />
@@ -80,7 +77,7 @@ const List: FC<ListProps> = ({
                 </div>
                 {searchItems.length < 1 &&
                 <div className="flex justify-center items-center text-gray-500 font-light mt-4">
-                    <ReactMarkdown>{noItemsErrorMessage ? noItemsErrorMessage : "No items found"}</ReactMarkdown>
+                    <ReactMarkdown>{t('notFound')}</ReactMarkdown>
                 </div>
                 }
             </div>

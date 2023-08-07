@@ -1,16 +1,17 @@
-    'use client';
+'use client';
 
 import {useCallback, useEffect, useState} from "react";
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
 import Input from "@/app/components/UI/Input";
 import Button from "@/app/components/UI/Button";
-import AuthSocialButton from "@/app/(site)/components/AuthSocialButton";
+import AuthSocialButton from "@/app/[locale]/(site)/components/AuthSocialButton";
 import {BsDiscord, BsGithub, BsGoogle} from "react-icons/bs";
 import {LiaYandexInternational} from "react-icons/lia";
 import axios from 'axios';
 import {toast} from "react-hot-toast";
 import {signIn, useSession} from 'next-auth/react';
 import {useRouter} from "next/navigation";
+import {useTranslations} from "next-intl";
 
 type Variant = 'LOGIN' | 'REGISTER';
 const AuthForm = () => {
@@ -44,13 +45,14 @@ const AuthForm = () => {
             password: '',
         }
     })
+    const t = useTranslations('authForm');
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
 
         if (variant === 'REGISTER') {
             axios.post('/api/register', data)
-                .then(() => signIn('credentials',{...data, redirect:true}))
-                .catch(() => toast.error('Something went wrong!'))
+                .then(() => signIn('credentials', {...data, redirect: true}))
+                .catch(() => toast.error(t('error')))
                 .finally(() => setIsLoading(false));
         }
         if (variant === 'LOGIN') {
@@ -60,10 +62,10 @@ const AuthForm = () => {
             })
                 .then((callback) => {
                     if (callback?.error) {
-                        toast.error("Invalid credentials!");
+                        toast.error(t('invalid'));
                     }
                     if (callback?.ok && !callback?.error) {
-                        toast.success("Logged in");
+                        toast.success(t('success'));
                     }
                 }).finally(() => setIsLoading(false));
         }
@@ -74,10 +76,10 @@ const AuthForm = () => {
         signIn(action, {redirect: true})
             .then((callback) => {
                 if (callback?.error) {
-                    toast.error("Invalid credentials!");
+                    toast.error(t('invalid'));
                 }
                 if (callback?.ok && !callback?.error) {
-                    toast.success("Logged in");
+                    toast.success(t('success'));
                 }
             }).finally(() => setIsLoading(false));
     }
@@ -107,8 +109,9 @@ const AuthForm = () => {
                     {variant === "REGISTER" && (
                         <Input
                             id="name"
-                            label="Name"
+                            label={t('name')}
                             type="text"
+                            placeholder={t('placeholderName')}
                             errors={errors}
                             register={register}
                             disabled={isLoading}
@@ -116,16 +119,18 @@ const AuthForm = () => {
                     )}
                     <Input
                         id="email"
-                        label="Email"
+                        label={t('email')}
                         type="email"
+                        placeholder={t('placeholderEmail')}
                         errors={errors}
                         register={register}
                         disabled={isLoading}
                     />
                     <Input
                         id="password"
-                        label="Password"
+                        label={t('password')}
                         type="password"
+                        placeholder={t('password')}
                         errors={errors}
                         register={register}
                         disabled={isLoading}
@@ -137,7 +142,7 @@ const AuthForm = () => {
                             type="submit"
 
                         >
-                            {variant === 'LOGIN' ? 'Sign In' : 'Register'}
+                            {variant === 'LOGIN' ? t('signIn') : t('register')}
                         </Button>
                     </div>
                 </form>
@@ -173,7 +178,7 @@ const AuthForm = () => {
                                         text-gray-500
                                     "
                                 >
-                                    Or continue with
+                                    {t('continue')}
                                 </span>
                         </div>
                     </div>
@@ -208,12 +213,12 @@ const AuthForm = () => {
                         text-gray-500
                     "
                 >
-                    <div>{variant === 'LOGIN' ? 'New to Garage Sale?' : "Already have an account?"}</div>
+                    <div>{variant === 'LOGIN' ? t('new') : t('have')}</div>
                     <div
                         onClick={toggleVariant}
                         className="underline cursor-pointer hover:text-gray-900 transition-all duration-200"
                     >
-                        {variant === 'LOGIN' ? "Create an account" : "Login"}
+                        {variant === 'LOGIN' ? t('create') : t('login')}
                     </div>
                 </div>
             </div>

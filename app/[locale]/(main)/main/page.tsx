@@ -2,8 +2,13 @@ import ItemCreate from "@/app/components/item/ItemCreate";
 import ReactMarkdown from "react-markdown";
 import CreateCategory from "@/app/components/category/CategoryCreate";
 import prismadb from "@/app/libs/prismadb";
+import {getTranslator} from "next-intl/server";
 
-const Main = async () => {
+const Main = async ({
+                        params: {locale}
+                    }:
+                        { params: { locale: string } }) => {
+    const t = await getTranslator(locale, 'menu')
     const categories = await prismadb.category.findMany();
     return (
         <div
@@ -24,7 +29,7 @@ const Main = async () => {
                         my-8
                     "
                 >
-                    Main menu
+                    {t('title')}
                 </ReactMarkdown>
                 <div
                     className="

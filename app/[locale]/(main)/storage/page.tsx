@@ -4,8 +4,7 @@ import ItemList from "@/app/components/UI/ItemList";
 export const dynamic = 'force-dynamic';
 
 
-const Page = async () => {
-
+const Storage = async () => {
     const items = await getItems();
 
     return (
@@ -21,12 +20,10 @@ const Page = async () => {
         >
             <ItemList
                 items={items}
-                title={`Items - ` + items.length}
-                noItemsErrorMessage="No items found"
                 search
             />
         </div>
     );
 };
 
-export default Page;
+export default Storage;

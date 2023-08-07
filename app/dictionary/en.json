@@ -1,0 +1,85 @@
+{
+  "main": {
+    "SignIn": "Sign in to your account"
+  },
+  "menu": {
+    "title": "Main menu"
+  },
+  "profile": {
+    "title": "Profile",
+    "signOut": "Sign out"
+  },
+  "createItemBlock": {
+    "title": "Create item",
+    "name": "Name",
+    "description": "Description",
+    "quantity": "Quantity",
+    "category": "Category",
+    "choose": "Choose a category",
+    "photo": "Choose a photo",
+    "another": "Choose another photo",
+    "create": "Create",
+    "success": "Item created",
+    "error": "Something went wrong"
+  },
+  "createCategoryBlock": {
+    "title": "Create category",
+    "name": "Name",
+    "description": "Description",
+    "photo": "Choose a photo",
+    "another": "Choose another photo",
+    "create": "Create",
+    "success": "Category created",
+    "error": "Something went wrong"
+  },
+  "storage": {
+    "items": "Items",
+    "noItems": "No items found"
+  },
+  "itemList": {
+    "search": "Search",
+    "placeholder": "Start typing",
+    "notFound": "No items found",
+    "title": "Items"
+  },
+  "categories": {
+    "title": "Categories",
+    "notFound": "No categories found"
+  },
+  "authForm": {
+    "error": "Something went wrong",
+    "invalid": "Invalid credentials",
+    "success": "Logged in",
+    "name": "Name",
+    "placeholderName": "John",
+    "email": "Email",
+    "placeholderEmail": "john@mail.com",
+    "password": "Password",
+    "signIn": "Sign in",
+    "register": "Register",
+    "continue": "Or continue with",
+    "new": "New to Garage Sale?",
+    "have": "Already have an account?",
+    "create": "Create an account",
+    "login": "Login"
+  },
+  "item": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "comments": "Comments",
+    "noComments": "No comments found"
+  },
+  "createComment": {
+    "success": "Message sent",
+    "error": "Something went wrong",
+    "placeholder": "Start typing..."
+  },
+  "categoryId": {
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "settings": {
+    "theme": "Change theme",
+    "success": "Theme changed"
+  }
+}

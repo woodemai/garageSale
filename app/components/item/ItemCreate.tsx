@@ -12,6 +12,7 @@ import {useSession} from "next-auth/react";
 import {CldUploadButton} from "next-cloudinary";
 import {HiPhoto} from "react-icons/hi2";
 import Image from "next/image";
+import {useTranslations} from "next-intl";
 
 interface CreateItemProps {
     categories: Category[]
@@ -20,6 +21,7 @@ interface CreateItemProps {
 const ItemCreate: FC<CreateItemProps> = ({
                                              categories
                                          }) => {
+    const t = useTranslations('createItemBlock');
     const session = useSession()
     const email = session.data?.user?.email as string;
     const [imageUrl, setImageUrl] = useState<string>('');
@@ -41,8 +43,8 @@ const ItemCreate: FC<CreateItemProps> = ({
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true)
         axios.post('/api/item', {...data, email, imageUrl})
-            .then(() => toast.success("Item created!"))
-            .catch(() => toast.error("Something went wrong"))
+            .then(() => toast.success(t(`success`)))
+            .catch(() => toast.error(t('error')))
             .finally(() => setIsLoading(false))
     }
     const handleImageUpload = (result: any) => {
@@ -59,7 +61,7 @@ const ItemCreate: FC<CreateItemProps> = ({
                                 font-bold
                             "
             >
-                Create item
+                {t('title')}
             </ReactMarkdown>
             <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -70,24 +72,25 @@ const ItemCreate: FC<CreateItemProps> = ({
 
                 "
             >
-                <Input disabled={isLoading} label="Name" id="name" register={register} errors={errors}
-                       placeholder="Name" required/>
-                <Input disabled={isLoading} label="Description" id="description" register={register} errors={errors}
-                       placeholder="Description" required/>
-                <Input disabled={isLoading} label="Quantity" id="quantity" register={register} errors={errors}
+                <Input disabled={isLoading} label={t('name')} id="name" register={register} errors={errors}
+                       placeholder={t('name')} required/>
+                <Input disabled={isLoading} label={t('description')} id="description" register={register}
+                       errors={errors}
+                       placeholder={t('description')} required/>
+                <Input disabled={isLoading} label={t('quantity')} id="quantity" register={register} errors={errors}
                        type="number"
                        placeholder="1" required/>
                 <Select
                     items={categories}
                     optionTitle={(category: Category) => category.name}
                     optionValue={(category: Category) => category.id}
-                    title="Category"
+                    title={t('category')}
                     register={register}
                     errors={errors}
                     required
                     disabled={isLoading}
                     id={'categoryId'}
-                    placeholder={"Choose a category"}
+                    placeholder={t('choose')}
                 />
                 <CldUploadButton
                     options={{maxFiles: 1}}
@@ -124,10 +127,10 @@ const ItemCreate: FC<CreateItemProps> = ({
                     >
                         <HiPhoto className="text-xl ml-1"/>
                         <ReactMarkdown
-                            className="text-xs ">{imageUrl === '' ? 'Choose a photo' : 'Choose another photo'}</ReactMarkdown>
+                            className="text-xs ">{imageUrl === '' ? t('choose') : t('another')}</ReactMarkdown>
                     </div>
                 </CldUploadButton>
-                <Button disabled={isLoading} fullWidth type='submit'>Create</Button>
+                <Button disabled={isLoading} fullWidth type='submit'>{t('create')}</Button>
             </form>
         </div>
     );

@@ -1,10 +1,14 @@
 import React from 'react';
-import prisma from "@/app/libs/prismadb";
 import List from "@/app/components/UI/List";
 import CategoryBlock from "@/app/components/category/CategoryBlock";
 import getCategories from "@/app/actions/getCategories";
+import {getTranslator} from "next-intl/server";
 
-const Page = async () => {
+const Page = async ({
+                        params: {locale}
+                    }:
+                        { params: { locale: string } }) => {
+    const t = await getTranslator(locale, 'categories');
     const categories = await getCategories();
     return (
         <div className="
@@ -22,8 +26,8 @@ const Page = async () => {
             <List
                 items={categories}
                 element={(category) => <CategoryBlock category={category}/>}
-                title="Categories"
-                noItemsErrorMessage="No categories found"
+                title={t('title')}
+                noItemsErrorMessage={t('notFound')}
             />
         </div>
     );

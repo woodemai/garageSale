@@ -1,8 +1,6 @@
 import React, {FC} from "react";
-import CategoryClientBlock from "@/app/(main)/categories/[id]/components/CategoryClientBlock";
+import CategoryClientBlock from "@/app/[locale]/(main)/categories/[id]/components/CategoryClientBlock";
 import ItemList from "@/app/components/UI/ItemList";
-import List from "@/app/components/UI/List";
-import ItemBlock from "@/app/components/item/ItemBlock";
 import getCategoryWithItems from "@/app/actions/getCategoryWithItems";
 
 interface PageProps {
@@ -18,7 +16,7 @@ const Page: FC<PageProps> = async ({
     if (category) {
         return (
             <>
-                 <div
+                <div
                     className="
                     flex
                     justify-center
@@ -30,7 +28,7 @@ const Page: FC<PageProps> = async ({
                 "
                 >
                     <CategoryClientBlock category={category}/>
-                    <ItemList items={category.items} search noItemsErrorMessage="No items found" title="Items"/>
+                    <ItemList items={category.items} search/>
                 </div>
             </>
         )

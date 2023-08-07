@@ -6,6 +6,8 @@ import button from "@/app/components/UI/Button";
 import {useEffect, useState} from "react";
 import {BsMoonStars} from "react-icons/bs";
 import {BiLoader} from "react-icons/bi";
+import {useTranslations} from "next-intl";
+import {toast} from "react-hot-toast";
 
 const ToggleThemeButton = () => {
     const [mounted, setMounted] = useState(false);
@@ -13,6 +15,7 @@ const ToggleThemeButton = () => {
         setMounted(true);
     }, [mounted]);
     const {systemTheme, theme, setTheme} = useTheme();
+    const t = useTranslations('settings');
     const renderThemeChanger = () => {
         if (!mounted) return (
             <div className="w-10 h-10 text-gray-900 m-0 dark:text-gray-100">
@@ -23,7 +26,10 @@ const ToggleThemeButton = () => {
         if (currentTheme === 'dark') {
             return (
                 <button
-                    onClick={() => setTheme('light')}
+                    onClick={() => {
+                        setTheme('light');
+                        toast.success(t('success'))
+                    }}
                     className="
                     mt-4
                     w-28
@@ -53,7 +59,10 @@ const ToggleThemeButton = () => {
         } else {
             return (
                 <button
-                    onClick={() => setTheme('dark')}
+                    onClick={() => {
+                        setTheme('dark');
+                        toast.success(t('success'))
+                    }}
                     className="
                     mt-4
                     h-10
@@ -101,7 +110,7 @@ const ToggleThemeButton = () => {
                 gap-x-4
             "
         >
-            <ReactMarkdown className="whitespace-nowrap inline-block">Change theme</ReactMarkdown>
+            <ReactMarkdown className="whitespace-nowrap inline-block">{t('theme')}</ReactMarkdown>
             {renderThemeChanger()}
         </div>
     )

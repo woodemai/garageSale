@@ -1,6 +1,6 @@
 import {FC} from "react";
 import prisma from "@/app/libs/prismadb";
-import ClientBlock from "@/app/(main)/storage/[id]/components/ClientBlock";
+import ClientBlock from "@/app/[locale]/(main)/storage/[id]/components/ClientBlock";
 import getCategories from "@/app/actions/getCategories";
 
 interface PageProps {
