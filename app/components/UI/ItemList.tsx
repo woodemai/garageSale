@@ -43,6 +43,8 @@ const List: FC<ListProps> = ({
                 flex
                 flex-col
                 items-center
+                text-gray-900
+                dark:text-gray-100
             "
         >
 

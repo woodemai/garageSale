@@ -1,8 +1,10 @@
 import React, {FC, ReactNode} from 'react';
-interface SidebarNav {
+
+interface SidebarNavProps {
     children: ReactNode
 }
-const SidebarNav:FC<SidebarNav> = ({children}) => {
+
+const SidebarNav: FC<SidebarNavProps> = ({children}) => {
     return (
         <nav className="
                 flex
@@ -12,7 +14,7 @@ const SidebarNav:FC<SidebarNav> = ({children}) => {
                 mx  -4
                 py-2
                 border-t-gray-200
-
+                dark:border-t-gray-700
             "
         >
             {children}

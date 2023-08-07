@@ -3,11 +3,11 @@ import SidebarElement from "@/app/components/sidebar/SidebarElement";
 import {LuHome, LuWarehouse} from "react-icons/lu";
 import {GiHomeGarage} from "react-icons/gi";
 import SidebarNav from "@/app/components/sidebar/SidebarNav";
-import {AiFillSetting} from "react-icons/ai";
 import {CgProfile} from "react-icons/cg";
 import {BiCategory} from "react-icons/bi";
 import {useEffect, useState} from "react";
 import {usePathname} from "next/navigation";
+import {CiSettings} from "react-icons/ci";
 
 const Sidebar = () => {
     const pathname = usePathname()
@@ -23,11 +23,13 @@ const Sidebar = () => {
                 border-r
                 h-screen
                 border-gray-200
+                dark:border-gray-700
                 flex-col
                 items-center
                 sm:flex
                 gap-2
                 bg-white
+                dark:bg-gray-900
                 sticky
                 top-0
                 left-0
@@ -58,21 +60,9 @@ const Sidebar = () => {
                 />
                 <SidebarElement
                     selected={currentPathname.includes('/settings')}
-                    icon={AiFillSetting} href='/settings'
+                    icon={CiSettings} href='/settings'
                 />
             </SidebarNav>
-            <nav
-                className="
-                    flex
-                    flex-col
-                    justify-start
-                    items-end
-                    gap-2
-                    m-2
-                "
-            >
-
-            </nav>
         </div>
     );
 };

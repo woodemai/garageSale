@@ -1,9 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 html,
 body,
 :root {
     height: 100%;
+}
 
+@layer base {
+    body {
+        @apply bg-gray-100 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-all duration-200;
+        @apply min-h-screen;
+    }
+
+    ::selection {
+        @apply text-white bg-indigo-500;
+    }
 }

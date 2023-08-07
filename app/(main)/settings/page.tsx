@@ -1,9 +1,15 @@
-import React from 'react';
+import ToggleThemeButton from "@/app/(main)/settings/components/ToggleThemeButton";
 
 const Page = () => {
     return (
-        <div>
-            Settings!
+        <div className="
+                flex
+                justify-center
+                items-center
+                w-full
+            "
+        >
+            <ToggleThemeButton/>
         </div>
     );
 };

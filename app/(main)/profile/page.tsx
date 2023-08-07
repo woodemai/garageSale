@@ -14,10 +14,31 @@ const Page = () => {
             <ImageModal isOpen={isImageOpen} onClose={() => setIsImageOpen(false)}
                         imageUrl={session.data?.user?.image as string}/>
             <div
-                className=" text-center sm:text-left flex flex-col gap-4 justify-center sm:justify-between items-center w-full sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-wxl 2xl:max-w-2xl rounded-lg bg-white p-4">
+                className=" text-center
+                        sm:text-left
+                        flex
+                        flex-col
+                        gap-4
+                        justify-center
+                        sm:justify-between
+                        items-center
+                        w-full
+                        sm:max-w-sm
+                        md:max-w-md
+                        lg:max-w-lg
+                        xl:max-wxl
+                        2xl:max-w-2xl
+                        rounded-b-xl
+                        sm:rounded-xl
+                        bg-white
+                        dark:bg-gray-900
+                        text-gray-900
+                        dark:text-gray-100
+                        p-4">
                 <ReactMarkdown className="text-xl font-semibold mb-4">Profile</ReactMarkdown>
                 <div className="flex flex-col sm:flex-row w-full ">
-                    <div className="overflow-hidden flex sm:justify-between w-full gap-4 justify-center" onClick={() => setIsImageOpen(true)}>
+                    <div className="overflow-hidden flex sm:justify-between w-full gap-4 justify-center"
+                         onClick={() => setIsImageOpen(true)}>
                         <Image
                             src={session.data?.user?.image as string}
                             width={96}
@@ -26,13 +47,14 @@ const Page = () => {
                             className="
                                 rounded-full
                                 object-cover
+                                min-w-fit
                            "
                         />
                     </div>
                     <div className="flex flex-col justify-start gap-4 mt-4 sm:mt-0 w-full">
                         <div className=" flex flex-col gap-2">
                             <ReactMarkdown
-                                className="text-md text-gray-900">{session.data?.user?.name as string}</ReactMarkdown>
+                                className="text-md">{session.data?.user?.name as string}</ReactMarkdown>
                             <ReactMarkdown
                                 className="text-sm text-gray-500">{session.data?.user?.email as string}</ReactMarkdown>
                         </div>
