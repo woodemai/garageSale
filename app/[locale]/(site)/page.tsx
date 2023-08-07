@@ -1,7 +1,14 @@
 import AuthForm from './components/AuthForm';
 import Image from "next/image";
+import {getTranslator} from "next-intl/server";
 
-export default function Home() {
+export default async function Home({
+                                       params: {locale}
+                                   }:
+                                       {
+                                           params: { locale: string }
+                                       }) {
+    const dict = await getTranslator(locale, 'main');
     return (
         <div
             className="
@@ -40,7 +47,7 @@ export default function Home() {
                 text-gray-900
             "
             >
-                Sign in to your account
+                {dict('SignIn')}
             </h2>
             <AuthForm/>
         </div>

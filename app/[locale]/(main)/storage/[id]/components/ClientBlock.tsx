@@ -1,16 +1,17 @@
 'use client';
 import React, {FC, useState} from 'react';
 import {Category, Comment, Item, User} from "@prisma/client";
-import EditItemModal from "@/app/(main)/storage/[id]/components/EditItemModal";
+import EditItemModal from "@/app/[locale]/(main)/storage/[id]/components/EditItemModal";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import Button from "@/app/components/UI/Button";
-import DeleteItemModal from "@/app/(main)/storage/[id]/components/DeleteItemModal";
+import DeleteItemModal from "@/app/[locale]/(main)/storage/[id]/components/DeleteItemModal";
 import ButtonBack from "@/app/components/UI/ButtonBack";
 import {format} from "date-fns";
 import ImageModal from "@/app/components/UI/ImageModal";
 import CommentList from "@/app/components/UI/CommentList";
-import CreateCommentForm from "@/app/(main)/storage/[id]/components/CreateCommentForm";
+import CreateCommentForm from "@/app/[locale]/(main)/storage/[id]/components/CreateCommentForm";
+import {useTranslations} from "next-intl";
 
 interface ClientBlockProps {
     categories: Category[],
@@ -28,6 +29,7 @@ const ClientBlock: FC<ClientBlockProps> = ({
     const [isModalEditOpen, setIsModalEditOpen] = useState(false);
     const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
     const [isModalImageOpen, setIsModalImageOpen] = useState(false);
+    const t = useTranslations('item');
     return (
         <>
             <EditItemModal isOpen={isModalEditOpen} onClose={() => setIsModalEditOpen(false)} item={item}
@@ -81,12 +83,13 @@ const ClientBlock: FC<ClientBlockProps> = ({
                                     mb-4
                                 "
                 >
-                    <Button fullWidth onClick={() => setIsModalEditOpen(true)}>Edit</Button>
-                    <Button fullWidth danger onClick={() => setIsModalDeleteOpen(true)}>Delete</Button>
+                    <Button fullWidth onClick={() => setIsModalEditOpen(true)}>{t('edit')}</Button>
+                    <Button fullWidth danger onClick={() => setIsModalDeleteOpen(true)}>{t('delete')}</Button>
                 </div>
                 <CreateCommentForm itemId={item.id}/>
             </div>
-            {item.comments && <CommentList title="Comments" items={item.comments} noItemsErrorMessage="No comments"/>}
+            {item.comments &&
+                <CommentList title={t('comments')} items={item.comments} noItemsErrorMessage={t('noComments')}/>}
         </>
     );
 };

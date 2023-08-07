@@ -3,12 +3,13 @@ import {Category, Item} from "@prisma/client";
 import React, {FC, useState} from "react";
 import ButtonBack from "@/app/components/UI/ButtonBack";
 import ReactMarkdown from "react-markdown";
-import CategoryEditModal from "@/app/(main)/categories/[id]/components/CategoryEditModal";
-import CategoryDeleteModal from "@/app/(main)/categories/[id]/components/CategoryDeleteModal";
+import CategoryEditModal from "@/app/[locale]/(main)/categories/[id]/components/CategoryEditModal";
+import CategoryDeleteModal from "@/app/[locale]/(main)/categories/[id]/components/CategoryDeleteModal";
 import Button from "@/app/components/UI/Button";
+import {useTranslations} from "next-intl";
 
 interface CategoryClientBlockProps {
-    category: Category & {items:Item[]},
+    category: Category & { items: Item[] },
 }
 
 const CategoryClientBlock: FC<CategoryClientBlockProps> = ({
@@ -16,6 +17,7 @@ const CategoryClientBlock: FC<CategoryClientBlockProps> = ({
                                                            }) => {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const t = useTranslations('categoryId')
     return (
         <>
             <CategoryEditModal category={category} isOpen={isEditModalOpen} onClose={() => setIsEditModalOpen(false)}/>
@@ -51,8 +53,8 @@ const CategoryClientBlock: FC<CategoryClientBlockProps> = ({
                                     gap-2
                                 "
                 >
-                    <Button fullWidth onClick={() => setIsEditModalOpen(true)}>Edit</Button>
-                    <Button fullWidth danger onClick={() => setIsDeleteModalOpen(true)}>Delete</Button>
+                    <Button fullWidth onClick={() => setIsEditModalOpen(true)}>{t('edit')}</Button>
+                    <Button fullWidth danger onClick={() => setIsDeleteModalOpen(true)}>{t('delete')}</Button>
                 </div>
             </div>
         </>

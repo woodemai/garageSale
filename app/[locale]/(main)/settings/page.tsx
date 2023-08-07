@@ -1,6 +1,6 @@
-import ToggleThemeButton from "@/app/(main)/settings/components/ToggleThemeButton";
+import ToggleThemeButton from "@/app/[locale]/(main)/settings/components/ToggleThemeButton";
 
-const Page = () => {
+const Settings = () => {
     return (
         <div className="
                 flex
@@ -19,4 +19,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default Settings;

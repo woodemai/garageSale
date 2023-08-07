@@ -5,8 +5,10 @@ import Image from "next/image";
 import Button from "@/app/components/UI/Button";
 import ReactMarkdown from "react-markdown";
 import ImageModal from "@/app/components/UI/ImageModal";
+import {useTranslations} from "next-intl";
 
-const Page = () => {
+const Profile = () => {
+    const t = useTranslations('profile');
     const session = useSession();
     const [isImageOpen, setIsImageOpen] = useState(false);
     return (
@@ -35,7 +37,7 @@ const Page = () => {
                         text-gray-900
                         dark:text-gray-100
                         p-4">
-                <ReactMarkdown className="text-xl font-semibold mb-4">Profile</ReactMarkdown>
+                <ReactMarkdown className="text-xl font-semibold mb-4">{t('title')}</ReactMarkdown>
                 <div className="flex flex-col sm:flex-row w-full ">
                     <div className="overflow-hidden flex sm:justify-between w-full gap-4 justify-center"
                          onClick={() => setIsImageOpen(true)}>
@@ -59,7 +61,7 @@ const Page = () => {
                                 className="text-sm text-gray-500">{session.data?.user?.email as string}</ReactMarkdown>
                         </div>
                         <div className=" flex-none w-full">
-                            <Button secondary fullWidth onClick={() => signOut()}>Log out</Button>
+                            <Button secondary fullWidth onClick={() => signOut()}>{t('signOut')}</Button>
                         </div>
                     </div>
                 </div>
@@ -68,4 +70,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default Profile;

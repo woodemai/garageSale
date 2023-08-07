@@ -1,6 +1,6 @@
 {
   "name": "garage-sale",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": false,
   "scripts": {
     "dev": "next dev",
@@ -25,6 +25,7 @@
     "next": "13.4.12",
     "next-auth": "^4.22.3",
     "next-cloudinary": "^4.16.3",
+    "next-intl": "^3.0.0-beta.9",
     "next-themes": "^0.2.1",
     "postcss": "8.4.27",
     "react": "18.2.0",

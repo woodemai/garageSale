@@ -9,8 +9,10 @@ import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import {HiPhoto} from "react-icons/hi2";
 import {CldUploadButton} from "next-cloudinary";
+import {useTranslations} from "next-intl";
 
 const CreateItem = () => {
+    const t = useTranslations('createCategoryBlock');
     const [isLoading, setIsLoading] = useState(false);
     const [imageUrl, setImageUrl] = useState<string>('');
     const {
@@ -56,7 +58,7 @@ const CreateItem = () => {
                                 font-bold
                             "
             >
-                Create category
+                {t('title')}
             </ReactMarkdown>
             <form
                 onSubmit={handleSubmit(onSubmit)}
@@ -67,10 +69,11 @@ const CreateItem = () => {
 
                 "
             >
-                <Input disabled={isLoading} label="Name" id="name" register={register} errors={errors}
-                       placeholder="Name" required/>
-                <Input disabled={isLoading} label="Description" id="description" register={register} errors={errors}
-                       placeholder="Description" required/>
+                <Input disabled={isLoading} label={t('name')} id="name" register={register} errors={errors}
+                       placeholder={t('name')} required/>
+                <Input disabled={isLoading} label={t('description')} id="description" register={register}
+                       errors={errors}
+                       placeholder={t('description')} required/>
                 <CldUploadButton
                     options={{maxFiles: 1}}
                     onUpload={handleImageUpload}
@@ -106,10 +109,10 @@ const CreateItem = () => {
                     >
                         <HiPhoto className="text-xl ml-1"/>
                         <ReactMarkdown
-                            className="text-xs ">{imageUrl === '' ? 'Choose a photo' : 'Choose another photo'}</ReactMarkdown>
+                            className="text-xs ">{imageUrl === '' ? t('photo') : t('another')}</ReactMarkdown>
                     </div>
                 </CldUploadButton>
-                <Button disabled={isLoading} fullWidth type='submit'>Create</Button>
+                <Button disabled={isLoading} fullWidth type='submit'>{t('create')}</Button>
             </form>
         </div>
     );

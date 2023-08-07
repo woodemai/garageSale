@@ -6,6 +6,7 @@ import {toast} from "react-hot-toast";
 import Input from "@/app/components/UI/Input";
 import {useSession} from "next-auth/react";
 import {BiSend} from "react-icons/bi";
+import {useTranslations} from "next-intl";
 
 interface CreateItemProps {
     itemId: string
@@ -30,11 +31,12 @@ const CreateCommentForm: FC<CreateItemProps> = ({
             userEmail: email
         }
     })
+    const t = useTranslations('createComment');
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true)
         axios.post('/api/comment', {...data})
-            .then(() => toast.success("Message sent"))
-            .catch(() => toast.error("Something went wrong"))
+            .then(() => toast.success(t('success')))
+            .catch(() => toast.error(t('error')))
             .finally(() => setIsLoading(false))
     }
     return (
@@ -52,7 +54,7 @@ const CreateCommentForm: FC<CreateItemProps> = ({
             >
                 <div className="w-full">
                     <Input disabled={isLoading} id="body" fullWidth register={register} errors={errors}
-                           placeholder="Start typing..." required/>
+                           placeholder={t('placeholder')} required/>
                 </div>
                 <button type='submit' className="text-2xl text-sky-500 hover:text-sky-700 transition-all duration-200"
                         disabled={isLoading}><BiSend/></button>
