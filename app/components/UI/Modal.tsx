@@ -86,6 +86,8 @@ const Modal: FC<ModalProps> = ({
                                         className="
                                             rounded-md
                                             bg-white
+                                            dark:bg-gray-800
+                                            dark:text-gray-100
                                             text-gray-400
                                             hover:text-gray-500
                                             focus:outline-none
@@ -95,8 +97,7 @@ const Modal: FC<ModalProps> = ({
                                         "
                                         onClick={onClose}
                                     >
-                                        <span className="sr-only">Close</span>
-                                        <IoClose className="h-6 w-6" aria-hidden={true}/>
+                                        <IoClose className="h-6 w-6"/>
                                     </button>
                                 </div>
                                 {children}

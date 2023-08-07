@@ -1,12 +1,14 @@
 'use client';
 
-import React, { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { ClipLoader } from 'react-spinners';
+import React, {Fragment} from 'react'
+import {Dialog, Transition} from '@headlessui/react'
+import {ClipLoader} from 'react-spinners';
+
 const Loading = () => {
     return (
         <Transition.Root show as={Fragment}>
-            <Dialog as="div" className="relative z-50" onClose={() => {}}>
+            <Dialog as="div" className="relative z-50" onClose={() => {
+            }}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
@@ -21,6 +23,7 @@ const Loading = () => {
               fixed
               inset-0
               bg-gray-100
+              dark:bg-gray-900
               bg-opacity-50
               transition-opacity
             "

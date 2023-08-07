@@ -21,6 +21,9 @@ const CategoryBlock: FC<CategoryBlockProps> = ({
                 sm:rounded-lg
                 shadow-sm
                 bg-white
+                dark:bg-gray-900
+                text-gray-400
+                dark:text-gray-400
                 p-4
                 w-full
                 mx-auto
@@ -30,9 +33,6 @@ const CategoryBlock: FC<CategoryBlockProps> = ({
                 xl:max-w-xl
                 2xl:max-w-2xl
                 cursor-pointer
-                text-gray-500
-                hover:bg-white
-                hover:text-gray-900
                 hover:shadow-md
                 transition-all duration-100
             "

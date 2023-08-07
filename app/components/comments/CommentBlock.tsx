@@ -16,10 +16,11 @@ const CommentBlock: FC<CommentBlockProps> = ({
                 flex
                 flex-col
                 w-full
-                bg-white
                 rounded-md
-                border
-                border-gray-200
+                ring-inset
+                ring-1
+                ring-gray-200
+                dark:ring-gray-700
                 p-4
             "
         >

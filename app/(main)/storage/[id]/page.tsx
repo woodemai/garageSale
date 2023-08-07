@@ -51,9 +51,12 @@ const Page: FC<PageProps> = async ({
                     sm:p-4
                     sm:rounded-lg
                     sm:bg-white
-                    text-gray-500
+                    dark:bg-gray-900
+                    text-gray-900
+                    dark:text-gray-200
                     w-full
                     sm:max-w-xl
+                    p-4
                 "
                 >
                     <ClientBlock categories={categories} item={item}/>

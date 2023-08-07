@@ -25,12 +25,14 @@ const ItemBlock: FC<ItemProps> = ({
                 rounded-lg
                 shadow-sm
                 bg-white
+                text-gray-700
+                dark:bg-gray-900
+                dark:text-gray-100
                 p-6
                 sm:w-2/3
                 w-full
                 min-w-full
                 cursor-pointer
-                text-gray-500
                 hover:bg-white
                 hover:text-gray-900
                 hover:shadow-md
@@ -61,8 +63,6 @@ const ItemBlock: FC<ItemProps> = ({
                     {item.image && <Image
                         className="
                         rounded-md
-                        border-sky-200
-                        border
                         object-cover
                         w-fit
                         h-fit

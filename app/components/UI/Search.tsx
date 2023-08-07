@@ -29,7 +29,6 @@ const Search: FC<InputProps> = ({
                     text-sm
                     font-medium
                     leading-6
-                    text-gray-900
                 "
                 htmlFor={id}
             >
@@ -45,6 +44,8 @@ const Search: FC<InputProps> = ({
                     autoComplete={id}
                     onChange={onChange}
                     className={clsx(`
+                        bg-white
+                        dark:bg-transparent
                         form-input
                         block
                         w-full
@@ -55,11 +56,14 @@ const Search: FC<InputProps> = ({
                         shadow-sm
                         ring-1
                         ring-inset
-                        ring-gray-300
+                        ring-gray-100
+                        dark:ring-gray-900
                         placeholder:text-gray-400
+                        transition-all: duration-200
                         focus:ring-2
                         focus:ring-inset
-                        focus:ring-sky-600
+                        focus:ring-gray-600
+                        dark:focus:ring-gray-700
                         sm:text-sm
                         sm:leading-6`)}
                 />

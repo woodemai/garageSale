@@ -40,6 +40,7 @@ const CreateItem = () => {
         <div
             className="
                 bg-white
+                dark:bg-gray-900
                 rounded-md
                 p-4
                 w-full

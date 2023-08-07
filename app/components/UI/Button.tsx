@@ -39,7 +39,7 @@ const Button: FC<ButtonProps> = ({
             transition-all duration-100`,
                 disabled && "opacity-50 cursor-default",
                 fullWidth && "w-full",
-                secondary ? "text-gray-900 hover:text-gray-200" : "text-white",
+                secondary ? "text-gray-900 dark:text-gray-100 dark:hover:text-gray-400 hover:text-gray-200" : "text-white",
                 danger && "bg-rose-500 hover:bg-rose-600 focus-visible:outline-rose-600",
                 !secondary && !danger && "bg-sky-500 hover:bg-sky-600 focus-visible:outline-sky-600"
             )}
