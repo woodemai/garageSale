@@ -22,10 +22,7 @@ export default async function RootLayout({
     children: ReactNode,
     params: { locale: string }
 }) {
-    const locale = useLocale();
-    if (params.locale !== locale) {
-        notFound();
-    }
+    const {locale} = params
     let messages;
     try {
         messages = (await import((`../dictionary/${locale}.json`))).default
