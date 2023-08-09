@@ -81,5 +81,14 @@
   "settings": {
     "theme": "Change theme",
     "success": "Theme changed"
+  },
+  "userChange": {
+    "title": "Change user info",
+    "name": "Your name",
+    "email": "Your email",
+    "selectPhoto": "Click to select photo, or drag & drop it to this window",
+    "save": "Save changes",
+    "success": "User saved",
+    "error": "Something went wrong"
   }
 }

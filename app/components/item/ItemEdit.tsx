@@ -4,7 +4,7 @@ import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
 import axios from "axios";
 import {toast} from "react-hot-toast";
 import Input from "@/app/components/UI/Input";
-import Button from "@/app/components/UI/Button";
+import Button from "@/app/components/UI/buttons/Button";
 import ReactMarkdown from "react-markdown";
 import Select from "@/app/components/UI/Select";
 import {Category, Item} from "@prisma/client";

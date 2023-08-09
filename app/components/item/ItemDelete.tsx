@@ -3,7 +3,7 @@ import {FC, useState} from "react";
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
 import axios from "axios";
 import {toast} from "react-hot-toast";
-import Button from "@/app/components/UI/Button";
+import Button from "@/app/components/UI/buttons/Button";
 import ReactMarkdown from "react-markdown";
 import {Item} from "@prisma/client";
 import {router} from "next/client";

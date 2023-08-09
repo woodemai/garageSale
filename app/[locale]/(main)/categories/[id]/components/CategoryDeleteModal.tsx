@@ -7,7 +7,7 @@ import axios from "axios";
 import {toast} from "react-hot-toast";
 import {PiWarningLight} from "react-icons/pi";
 import ReactMarkdown from "react-markdown";
-import Button from "@/app/components/UI/Button";
+import Button from "@/app/components/UI/buttons/Button";
 import {useRouter} from "next/navigation";
 
 interface CategoryDeleteModalProps {

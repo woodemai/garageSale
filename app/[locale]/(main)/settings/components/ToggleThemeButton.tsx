@@ -2,7 +2,7 @@
 import ReactMarkdown from "react-markdown";
 import {useTheme} from "next-themes";
 import {CgSun} from "react-icons/cg";
-import button from "@/app/components/UI/Button";
+import button from "@/app/components/UI/buttons/Button";
 import {useEffect, useState} from "react";
 import {BsMoonStars} from "react-icons/bs";
 import {BiLoader} from "react-icons/bi";

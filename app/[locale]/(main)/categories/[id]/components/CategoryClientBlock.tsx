@@ -1,11 +1,11 @@
 'use client';
 import {Category, Item} from "@prisma/client";
 import React, {FC, useState} from "react";
-import ButtonBack from "@/app/components/UI/ButtonBack";
+import ButtonBack from "@/app/components/UI/buttons/ButtonBack";
 import ReactMarkdown from "react-markdown";
 import CategoryEditModal from "@/app/[locale]/(main)/categories/[id]/components/CategoryEditModal";
 import CategoryDeleteModal from "@/app/[locale]/(main)/categories/[id]/components/CategoryDeleteModal";
-import Button from "@/app/components/UI/Button";
+import Button from "@/app/components/UI/buttons/Button";
 import {useTranslations} from "next-intl";
 
 interface CategoryClientBlockProps {

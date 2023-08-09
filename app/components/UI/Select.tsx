@@ -46,6 +46,7 @@ const Select: FC<SelectProps<any>> = ({
                         border-0
                         py-1.5
                         text-gray-900
+                        dark:text-gray-100
                         shadow-sm
                         ring-1
                         ring-inset
@@ -60,7 +61,7 @@ const Select: FC<SelectProps<any>> = ({
                         bg-white
                         dark:bg-gray-900`,
                     errors[id] && "focus:ring-rose-500",
-                    disabled && "opacity-50 cursor-default")}
+                    disabled && "opacity-50 cursor-default text-gray-500")}
             >
                 {placeholder && <option value={""} disabled>{placeholder}</option>}
                 {items.map(item =>

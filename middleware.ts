@@ -1,7 +1,7 @@
 import {withAuth} from "next-auth/middleware";
 import createMiddleware from "next-intl/middleware";
 
-withAuth({
+ withAuth({
     pages: {
         signIn: '/'
     }
@@ -17,5 +17,4 @@ export const config = {
         '/((?!api|_next|.*\\..*).*)',
     ]
 };
-
 export default createMiddleware({locales: ['en', 'ru'], defaultLocale: 'en'});

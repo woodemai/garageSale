@@ -29,7 +29,7 @@ const MobileFooter = () => {
                 flex
                 flex-row
                 justify-between
-                px-12
+                px-6
                 z-40
             "
         >

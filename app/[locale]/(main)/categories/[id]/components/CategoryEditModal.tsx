@@ -10,7 +10,7 @@ import Input from "@/app/components/UI/Input";
 import {CldUploadButton} from "next-cloudinary";
 import Image from "next/image";
 import {HiPhoto} from "react-icons/hi2";
-import Button from "@/app/components/UI/Button";
+import Button from "@/app/components/UI/buttons/Button";
 
 interface CategoryEditModalProps {
     category:Category,

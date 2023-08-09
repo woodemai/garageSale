@@ -2,10 +2,11 @@
 import React, {useState} from 'react';
 import {signOut, useSession} from "next-auth/react";
 import Image from "next/image";
-import Button from "@/app/components/UI/Button";
+import Button from "@/app/components/UI/buttons/Button";
 import ReactMarkdown from "react-markdown";
 import ImageModal from "@/app/components/UI/ImageModal";
 import {useTranslations} from "next-intl";
+import {RxAvatar} from "react-icons/rx";
 
 const Profile = () => {
     const t = useTranslations('profile');
@@ -26,10 +27,6 @@ const Profile = () => {
                         items-center
                         w-full
                         sm:max-w-sm
-                        md:max-w-md
-                        lg:max-w-lg
-                        xl:max-wxl
-                        2xl:max-w-2xl
                         rounded-b-xl
                         sm:rounded-xl
                         bg-white
@@ -41,28 +38,30 @@ const Profile = () => {
                 <div className="flex flex-col sm:flex-row w-full ">
                     <div className="overflow-hidden flex sm:justify-between w-full gap-4 justify-center"
                          onClick={() => setIsImageOpen(true)}>
-                        <Image
-                            src={session.data?.user?.image as string}
-                            width={96}
-                            height={96}
-                            alt={'avatar'}
-                            className="
+                        <div className="w-full h-full flex justify-center items-center">
+                            {session.data?.user?.image ? <Image
+                                    src={session.data?.user?.image as string}
+                                    width={256}
+                                    height={256}
+                                    alt={'Avatar'}
+                                    className="
                                 rounded-full
                                 object-cover
-                                min-w-fit
+                                w-32
+                                h-32
                            "
-                        />
+                                />
+                                : <RxAvatar size={128}/>}
+                        </div>
                     </div>
-                    <div className="flex flex-col justify-start gap-4 mt-4 sm:mt-0 w-full">
-                        <div className=" flex flex-col gap-2">
+                    <div className="flex flex-col justify-center sm:justify-start gap-4 mt-4 sm:mt-0 items-center sm:items-start w-full">
+                        <div className=" flex flex-col gap-2 px-3">
                             <ReactMarkdown
                                 className="text-md">{session.data?.user?.name as string}</ReactMarkdown>
                             <ReactMarkdown
                                 className="text-sm text-gray-500">{session.data?.user?.email as string}</ReactMarkdown>
                         </div>
-                        <div className=" flex-none w-full">
-                            <Button secondary fullWidth onClick={() => signOut()}>{t('signOut')}</Button>
-                        </div>
+                        <Button secondary onClick={() => signOut()}>{t('signOut')}</Button>
                     </div>
                 </div>
             </div>
