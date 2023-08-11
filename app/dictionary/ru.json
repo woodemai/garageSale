@@ -86,9 +86,18 @@
     "title": "Изменить ваш профиль",
     "name": "Ваше имя",
     "email": "Ваша эл. почта",
+    "oldPassword": "Старый пароль",
+    "password": "Пароль",
+    "confirmPassword": "Подтверждение пароля",
+    "passwordInvalid": "Пароль должен содержать:",
+    "passwordErrorCharacters": "Хотя бы 6 символов",
+    "passwordErrorUppercase": "Хотя бы одну букву верхнего регистра",
+    "passwordErrorSymbol": "Хотя бы один специальный символ",
+    "confirmPasswordError": "Пароли не совпадают",
     "selectPhoto": "Нажмите, чтобы выбрать фото или перетащите его в это окно",
     "save": "Сохранить изменения",
     "success": "Данные изменены",
-    "error": "Что-то пошло не так"
+    "error": "Что-то пошло не так",
+    "passwordErrorToast": "Неверный пароль"
   }
 }

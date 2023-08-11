@@ -6,7 +6,7 @@ import {FC} from "react";
 interface InputProps {
     label?: string,
     id: string,
-    type?: string,
+    type?: 'password' | 'text' | 'number' | 'email',
     required?: boolean,
     fullWidth?: boolean
     register: UseFormRegister<FieldValues>,
